@@ -69,8 +69,33 @@ public class Menu {
 	}
 	
 	private static void vehicleMenu() {
-		
-		
+		int choice;
+		while((choice = MenuOptions.VehicleOptions()) != 0) {
+			switch (choice) {
+			case 1:
+				System.out.println("Add Vehicle");
+				break;
+				
+			case 2:
+				System.out.println("Update Vehicle");
+				break;
+				
+			case 3:
+				System.out.println("Delete Vehicle");
+				break;
+				
+			case 4:
+				System.out.println("Show all Vehicles");
+				break;
+				
+			case 5:
+				System.out.println("Show Specific Vehicles");
+				break;
+				
+			default:
+				break;
+			}
+		}	
 	}
 	
 	private static void service_request() {
