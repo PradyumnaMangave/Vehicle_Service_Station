@@ -13,6 +13,7 @@ public class MenuOptions {
 		System.out.println("4. Part Info");
 		System.out.println("5. Todays Business");
 		System.out.println("6. Given Date Business");
+		System.out.print("Enter Your choice = ");
 		return new Scanner(System.in).nextInt();
 		}
 	
@@ -24,6 +25,19 @@ public class MenuOptions {
 		System.out.println("3. Delete Customer");
 		System.out.println("4. Show All Customers");
 		System.out.println("5. Show Specific Customer");
+		System.out.print("Enter Your choice = ");
+		return new Scanner(System.in).nextInt();
+		
+	}
+	
+	public static int VehicleOptions() {
+		System.out.println("Vehicle Menu");
+		System.out.println("0. Previous Menu");
+		System.out.println("1. Add Vehicle");
+		System.out.println("2. Edit Vehicle Info");
+		System.out.println("3. Delete Vehicle");
+		System.out.println("4. Show All Vehicles");
+		System.out.println("5. Show Specific Vehicle");
 		System.out.print("Enter Your choice = ");
 		return new Scanner(System.in).nextInt();
 		
