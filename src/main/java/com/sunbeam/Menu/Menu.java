@@ -104,6 +104,7 @@ public class Menu {
 			switch (choice) {
 			case 1:
 				System.out.println("Select from below options::");
+				Service_Req_Customer_SubMenu();
 				
 				break;
 				
