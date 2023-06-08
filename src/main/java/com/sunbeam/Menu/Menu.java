@@ -110,6 +110,7 @@ public class Menu {
 				
 			case 2:
 				System.out.println("Select from process request submenu");
+				Service_Req_Sub_Process_Request();
 				break;
 				
 			case 3:
@@ -145,6 +146,37 @@ public class Menu {
 
 			default:
 				System.out.println("Wrong Choice Selected");
+				break;
+			}
+		}
+	}
+	
+	private static void Service_Req_Sub_Process_Request() {
+		int choice;
+		while((choice = MenuOptions.ServiceReqSubMenuProcessReq()) != 0) {
+			switch (choice) {
+			case 1:
+				System.out.println("New Service");
+				break;
+
+			case 2:
+				System.out.println("existing service");
+				break;
+
+			case 3:
+				System.out.println("maintainence");
+				break;
+
+			case 4:
+				System.out.println("repairing");
+				break;
+
+			case 5:
+				System.out.println("Oil/additive change if any");
+				break;
+
+			default:
+				System.out.println("Wrong Choice selected");
 				break;
 			}
 		}
