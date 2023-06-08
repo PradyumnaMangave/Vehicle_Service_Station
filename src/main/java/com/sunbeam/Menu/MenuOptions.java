@@ -31,6 +31,16 @@ public class MenuOptions {
 		
 	}
 	
+	public static int ServiceRequestOptions() {
+		System.out.println("Service Request Menu");
+		System.out.println("0. Previous Menu");
+		System.out.println("1. Select Customer Menu");
+		System.out.println("2. Process Request Menu");
+		System.out.println("3. Display Bill");
+		System.out.println("4. Get Payment From customer");
+		return new Scanner(System.in).nextInt();
+	}
+	
 	public static int VehicleOptions() {
 		System.out.println("Vehicle Menu");
 		System.out.println("0. Previous Menu");
