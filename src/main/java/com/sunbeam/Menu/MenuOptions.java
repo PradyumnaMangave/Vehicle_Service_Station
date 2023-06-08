@@ -41,6 +41,16 @@ public class MenuOptions {
 		return new Scanner(System.in).nextInt();
 	}
 	
+	public static int ServiceReqSubMenuCustomer() {
+		System.out.println("Customer Submenu");
+		System.out.println("0. Previous Menu");
+		System.out.println("1. Choose Existing Customer");
+		System.out.println("2. Display His/Her vehicles");
+		System.out.println("3. Choose vehicle from vehicle list");
+		return new Scanner(System.in).nextInt();
+		
+	}
+	
 	public static int VehicleOptions() {
 		System.out.println("Vehicle Menu");
 		System.out.println("0. Previous Menu");
