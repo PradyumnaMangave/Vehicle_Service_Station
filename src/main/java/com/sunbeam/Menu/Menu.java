@@ -104,8 +104,35 @@ public class Menu {
 	}
 	
 	private static void partMenu() {
-		
-		
+		int choice;
+		while ((choice = MenuOptions.PartOptions()) != 0){
+			switch (choice) {
+			case 1:
+				System.out.println("Add");
+				break;
+				
+			case 2:
+				System.out.println("Update");
+				break;
+				
+			case 3:
+				System.out.println("Delete");
+				break;
+				
+			case 4:
+				System.out.println("Show all");
+				break;
+				
+			case 5:
+				System.out.println("Show specific");
+				break;
+
+			default:
+				System.out.println("Wrong choice");
+				break;
+			}
+		}
+	
 	}
 	
 	private static void todays_business() {
