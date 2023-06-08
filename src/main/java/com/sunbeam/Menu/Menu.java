@@ -1,4 +1,4 @@
-package com.sunbeam.Menu;
+package com.sunbeam.Menu;import javax.swing.colorchooser.ColorChooserComponentFactory;
 
 public class Menu {
 	
@@ -121,6 +121,29 @@ public class Menu {
 				
 			default:
 				System.out.println("Wrong Choice Selected..");
+				break;
+			}
+		}
+	}
+	
+	private static void Service_Req_Customer_SubMenu() {
+		int choice;
+		while((choice = MenuOptions.ServiceReqSubMenuCustomer()) != 0) {
+			switch (choice) {
+			case 1:
+				System.out.println("Choose customer");
+				break;
+
+			case 2:
+				System.out.println("Display vihicle data");
+				break;
+
+			case 3:
+				System.out.println("Choose vehicle");
+				break;
+
+			default:
+				System.out.println("Wrong Choice Selected");
 				break;
 			}
 		}
