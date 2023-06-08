@@ -99,8 +99,31 @@ public class Menu {
 	}
 	
 	private static void service_request() {
-		
-		
+		int choice;
+		while((choice = MenuOptions.ServiceRequestOptions()) != 0) {
+			switch (choice) {
+			case 1:
+				System.out.println("Select from below options::");
+				
+				break;
+				
+			case 2:
+				System.out.println("Select from process request submenu");
+				break;
+				
+			case 3:
+				System.out.println("Generate bill");
+				break;
+				
+			case 4:
+				System.out.println("Get payment from customer and store it in table");
+				break;
+				
+			default:
+				System.out.println("Wrong Choice Selected..");
+				break;
+			}
+		}
 	}
 	
 	private static void partMenu() {
