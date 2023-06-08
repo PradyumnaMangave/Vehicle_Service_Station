@@ -1,5 +1,6 @@
 package com.sunbeam.Menu;
 
+import java.security.PublicKey;
 import java.util.Scanner;
 
 public class MenuOptions {
@@ -40,6 +41,16 @@ public class MenuOptions {
 		System.out.println("5. Show Specific Vehicle");
 		System.out.print("Enter Your choice = ");
 		return new Scanner(System.in).nextInt();
-		
+	}
+
+	public static int PartOptions() {
+		System.out.println("Parts menu");
+		System.out.println("0. Previous Menu");
+		System.out.println("1. Add Part");
+		System.out.println("2. Edit Part Info");
+		System.out.println("3. Delete part");
+		System.out.println("4. Show All Parts");
+		System.out.println("5. Show Specific Part");
+		return new Scanner(System.in).nextInt();
 	}
 }
