@@ -51,6 +51,18 @@ public class MenuOptions {
 		
 	}
 	
+	public static int ServiceReqSubMenuProcessReq() {
+		System.out.println("Process Request Submenus");
+		System.out.println("0. Previous Menu");
+		System.out.println("1. New Service");
+		System.out.println("2. Existing Service");
+		System.out.println("3. Maintainence");
+		System.out.println("4. Repairing");
+		System.out.println("5. Oil/Additive change/add");
+		return new Scanner(System.in).nextInt();
+		
+	}
+	
 	public static int VehicleOptions() {
 		System.out.println("Vehicle Menu");
 		System.out.println("0. Previous Menu");
