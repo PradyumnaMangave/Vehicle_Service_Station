@@ -14,7 +14,6 @@ public class DatabaseConnectivity {
 	try 
 	{
 		Class.forName("com.mysql.cj.jdbc.Driver");
-		System.out.println("Driver Loaded");
 		String URL = "jdbc:mysql://localhost:3306/Vehicle_Service_Station_DB";
 		String Username = "root";
 		String Password = "SqlPr@9306";
