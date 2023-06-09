@@ -52,7 +52,7 @@ public class Menu {
 				break;
 				
 			case DELETE:
-				System.out.println("Delete customer");
+				com.sunbeam.service.Customer_Service.Delete();
 				break;
 				
 			case ALL:
