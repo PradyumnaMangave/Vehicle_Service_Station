@@ -25,4 +25,19 @@ public class Customer_Service {
 		com.sunbeam.dao.Customer_DAO.insertToDB(customer);
 		System.out.println("Data Inserted Successfully");
 	}
+	
+	public static void Delete() {
+		System.out.println("Enter Id to delete::");
+		Scanner sc = new Scanner(System.in); 
+		int id = sc.nextInt();
+		boolean f = com.sunbeam.dao.Customer_DAO.Delete(id);
+		if (f)
+		{
+			System.out.println("Deleted Successfully");
+		}
+		else
+		{
+			System.out.println("Check ID again..");
+		}
+	}
 }
