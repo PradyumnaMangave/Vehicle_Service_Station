@@ -6,20 +6,26 @@ import java.sql.SQLException;
 
 public class DatabaseConnectivity {
 	
-	public static final String DRIVER = "com.mysql.cj.jdbc.Driver";
-	public static final String URL = "jdbc:mysql://localhost:3306/Vehicle_Service_Station_DB";
-	public static final String Username = "root";
-	public static final String Password = "SqlPr@9306";
 	
-	static{
-		try {
-			Class.forName(DRIVER);
-		} catch (ClassNotFoundException e) {
+	static Connection con;
+	public static Connection create()
+	{
+	 
+	try 
+	{
+		Class.forName("com.mysql.cj.jdbc.Driver");
+		System.out.println("Driver Loaded");
+		String URL = "jdbc:mysql://localhost:3306/Vehicle_Service_Station_DB";
+		String Username = "root";
+		String Password = "SqlPr@9306";
+		
+		con=DriverManager.getConnection(URL,Username,Password);
+	}
+		catch (Exception e) {
 			e.printStackTrace();
 		}
-	}
-	
-	public static Connection getConnection() throws SQLException {
-		return DriverManager.getConnection(URL,Username,Password);
-	}
+		return con;
+
 }
+}
+
