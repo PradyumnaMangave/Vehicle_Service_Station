@@ -23,11 +23,28 @@ public class Customer_DAO {
 		pst.setString(5, customer.getAddress());
 		
 		pst.executeUpdate();
-		f=true;
 	}catch (Exception E)
 	{
 		E.printStackTrace();
 	}
 	return f;
 	}
+
+	public static boolean Delete(int id) {
+		
+		boolean f = false;
+		try {
+		Connection con=DatabaseConnectivity.create();
+		String SQL = "DELETE from customer WHERE id = ?";
+		PreparedStatement pst = con.prepareStatement(SQL);
+		
+		pst.setInt(1, id);
+		int count = pst.executeUpdate();
+		if(count != 0)
+		f=true;
+		}catch (Exception e) {
+			e.printStackTrace();
+	}
+	return f;	
+}
 }
