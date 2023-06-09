@@ -3,31 +3,31 @@ package com.sunbeam.Menu;import javax.swing.colorchooser.ColorChooserComponentFa
 public class Menu {
 	
 	public static void mainMenu(){
-		int choice;
+		EMainMenu choice;
 		
-			while((choice = MenuOptions.MainMenuOptions()) != 0) {
+			while((choice = MenuOptions.MainMenuOptions()) != EMainMenu.EXIT) {
 				switch (choice) {
-				case 1:
+				case CUSTOMER:
 					customerMenu();
 					break;
 				
-				case 2:
+				case VEHICLE:
 					vehicleMenu();
 					break;	
 					
-				case 3:
+				case SERVICE:
 					service_request();
 					break;
 					
-				case 4:
+				case PART:
 					partMenu();
 					break;
 					
-				case 5:
+				case TODAYBUSINESS:
 					todays_business();
 					break;
 					
-				case 6:
+				case SPECIBUSINESS:
 					Specific_Day_business();
 					break;
 
@@ -39,56 +39,57 @@ public class Menu {
 	}
 
 	private static void customerMenu() {
-		int choice;
-		while((choice = MenuOptions.CustomerOptions()) != 0) {
+		ECustomerMenu choice;
+		while((choice = MenuOptions.CustomerOptions()) != ECustomerMenu.EXIT) {
 			switch (choice) {
-			case 1:
+			case ADD:
 				System.out.println("Add customer");
 				break;
 				
-			case 2:
+			case EDIT:
 				System.out.println("Update customer");
 				break;
 				
-			case 3:
+			case DELETE:
 				System.out.println("Delete customer");
 				break;
 				
-			case 4:
+			case ALL:
 				System.out.println("Show all customer");
 				break;
 				
-			case 5:
+			case SPECIADD:
 				System.out.println("Show Specific Customer");
 				break;
 				
 			default:
+				System.out.println("Wrong Choice Selected");
 				break;
 			}
 		}
 	}
 	
 	private static void vehicleMenu() {
-		int choice;
-		while((choice = MenuOptions.VehicleOptions()) != 0) {
+		EVehicleMenu choice;
+		while((choice = MenuOptions.VehicleOptions()) != EVehicleMenu.EXIT) {
 			switch (choice) {
-			case 1:
+			case ADD:
 				System.out.println("Add Vehicle");
 				break;
 				
-			case 2:
+			case EDIT:
 				System.out.println("Update Vehicle");
 				break;
 				
-			case 3:
+			case DELETE:
 				System.out.println("Delete Vehicle");
 				break;
 				
-			case 4:
+			case ALL:
 				System.out.println("Show all Vehicles");
 				break;
 				
-			case 5:
+			case SPECIADD:
 				System.out.println("Show Specific Vehicles");
 				break;
 				
@@ -99,25 +100,25 @@ public class Menu {
 	}
 	
 	private static void service_request() {
-		int choice;
-		while((choice = MenuOptions.ServiceRequestOptions()) != 0) {
+		EServiceRequestMenu choice;
+		while((choice = MenuOptions.ServiceRequestOptions()) != EServiceRequestMenu.EXIT) {
 			switch (choice) {
-			case 1:
+			case SELECT_CUSTOMER:
 				System.out.println("Select from below options::");
 				Service_Req_Customer_SubMenu();
 				
 				break;
 				
-			case 2:
+			case PROCESS_REQUEST:
 				System.out.println("Select from process request submenu");
 				Service_Req_Sub_Process_Request();
 				break;
 				
-			case 3:
+			case DISPLAY_BILL:
 				System.out.println("Generate bill");
 				break;
 				
-			case 4:
+			case GET_PAYMENT:
 				System.out.println("Get payment from customer and store it in table");
 				break;
 				
@@ -129,18 +130,18 @@ public class Menu {
 	}
 	
 	private static void Service_Req_Customer_SubMenu() {
-		int choice;
-		while((choice = MenuOptions.ServiceReqSubMenuCustomer()) != 0) {
+		EServiceRequestSubCustomer choice;
+		while((choice = MenuOptions.ServiceReqSubMenuCustomer()) != EServiceRequestSubCustomer.EXIT) {
 			switch (choice) {
-			case 1:
+			case CHOOSE_CUSTOMER:
 				System.out.println("Choose customer");
 				break;
 
-			case 2:
-				System.out.println("Display vihicle data");
+			case DISPLAY_HIS_VEHICLES:
+				System.out.println("Display vehicle data");
 				break;
 
-			case 3:
+			case CHOOSE_VEHICLE:
 				System.out.println("Choose vehicle");
 				break;
 
@@ -152,26 +153,26 @@ public class Menu {
 	}
 	
 	private static void Service_Req_Sub_Process_Request() {
-		int choice;
-		while((choice = MenuOptions.ServiceReqSubMenuProcessReq()) != 0) {
+		EServiceRequestSubProcess choice;
+		while((choice = MenuOptions.ServiceReqSubMenuProcessReq()) != EServiceRequestSubProcess.EXIT) {
 			switch (choice) {
-			case 1:
+			case NEW_SERVICE:
 				System.out.println("New Service");
 				break;
 
-			case 2:
+			case EXISTING_SERVICE:
 				System.out.println("existing service");
 				break;
 
-			case 3:
+			case MAINTAINANCE:
 				System.out.println("maintainence");
 				break;
 
-			case 4:
+			case REPAIRING:
 				System.out.println("repairing");
 				break;
 
-			case 5:
+			case OIL_ADDITIVE_CHANGE:
 				System.out.println("Oil/additive change if any");
 				break;
 
@@ -183,26 +184,26 @@ public class Menu {
 	}
 	
 	private static void partMenu() {
-		int choice;
-		while ((choice = MenuOptions.PartOptions()) != 0){
+		EPartsMenu choice;
+		while ((choice = MenuOptions.PartOptions()) != EPartsMenu.EXIT){
 			switch (choice) {
-			case 1:
+			case ADD:
 				System.out.println("Add");
 				break;
 				
-			case 2:
+			case EDIT:
 				System.out.println("Update");
 				break;
 				
-			case 3:
+			case DELETE:
 				System.out.println("Delete");
 				break;
 				
-			case 4:
+			case ALL:
 				System.out.println("Show all");
 				break;
 				
-			case 5:
+			case SPECIADD:
 				System.out.println("Show specific");
 				break;
 
