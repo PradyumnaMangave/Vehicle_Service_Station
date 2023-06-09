@@ -44,7 +44,7 @@ public class Menu {
 		while((choice = MenuOptions.CustomerOptions()) != ECustomerMenu.EXIT) {
 			switch (choice) {
 			case ADD:
-				System.out.println("Add customer");
+				com.sunbeam.service.Customer_Service.insertToDB();
 				break;
 				
 			case EDIT:
