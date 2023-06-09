@@ -1,4 +1,4 @@
-package com.sunbeam.Menu;import javax.swing.colorchooser.ColorChooserComponentFactory;
+package com.sunbeam.Menu;
 
 public class Menu {
 	
@@ -32,6 +32,7 @@ public class Menu {
 					break;
 
 				default:
+					System.out.println("Wrong choice selected...");
 					break;
 				}
 			
@@ -94,6 +95,7 @@ public class Menu {
 				break;
 				
 			default:
+				System.out.println("Wrong choice selected...");
 				break;
 			}
 		}	
