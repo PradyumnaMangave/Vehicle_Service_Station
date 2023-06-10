@@ -53,4 +53,22 @@ public class Parts_DAO {
 		return false;
 	}
 
+	public static boolean insertToDB(Part_Entity parts) {
+		boolean f = false;
+		try {
+			Connection con = DatabaseConnectivity.create();
+			String SQL = "INSERT into parts (id,name,description,price) values (?,?,?,?)";
+			PreparedStatement pst = con.prepareStatement(SQL);
+			pst.setInt(1, parts.getId());
+			pst.setString(2, parts.getName());
+			pst.setString(3, parts.getDescription());
+			pst.setBigDecimal(4, parts.getPrice());
+			pst.executeUpdate();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return false;
+	}
+	
 }
