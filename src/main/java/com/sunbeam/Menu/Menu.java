@@ -59,7 +59,7 @@ public class Menu {
 				com.sunbeam.service.Customer_Service.ShowAll();
 				break;
 				
-			case SPECIADD:
+			case SPECI_SHOW:
 				com.sunbeam.service.Customer_Service.SpeciShow();
 				break;
 				
@@ -90,7 +90,7 @@ public class Menu {
 				System.out.println("Show all Vehicles");
 				break;
 				
-			case SPECIADD:
+			case SPECI_SHOW:
 				System.out.println("Show Specific Vehicles");
 				break;
 				
@@ -205,7 +205,7 @@ public class Menu {
 				System.out.println("Show all");
 				break;
 				
-			case SPECIADD:
+			case SPECI_SHOW:
 				System.out.println("Show specific");
 				break;
 

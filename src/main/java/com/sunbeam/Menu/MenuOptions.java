@@ -1,6 +1,5 @@
 package com.sunbeam.Menu;
 
-import java.awt.Choice;
 import java.util.Scanner;
 
 enum EMainMenu{
@@ -8,11 +7,11 @@ enum EMainMenu{
 }
 
 enum ECustomerMenu{
-	EXIT,ADD,EDIT,DELETE,ALL,SPECIADD,DEFAULT
+	EXIT,ADD,EDIT,DELETE,ALL,SPECI_SHOW,DEFAULT
 }
 
 enum EVehicleMenu{
-	EXIT,ADD,EDIT,DELETE,ALL,SPECIADD,DEFAULT
+	EXIT,ADD,EDIT,DELETE,ALL,SPECI_SHOW,DEFAULT
 }
 
 enum EServiceRequestMenu{
@@ -28,7 +27,7 @@ enum EServiceRequestSubProcess{
 }
 
 enum EPartsMenu{
-	EXIT,ADD,SPECIADD,EDIT,DELETE,ALL,DEFAULT
+	EXIT,ADD,SPECI_SHOW,EDIT,DELETE,ALL,DEFAULT
 
 }
 
