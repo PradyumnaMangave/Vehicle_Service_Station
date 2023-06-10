@@ -56,7 +56,7 @@ public class Menu {
 				break;
 				
 			case ALL:
-				System.out.println("Show all customer");
+				com.sunbeam.service.Customer_Service.ShowAll();
 				break;
 				
 			case SPECIADD:
