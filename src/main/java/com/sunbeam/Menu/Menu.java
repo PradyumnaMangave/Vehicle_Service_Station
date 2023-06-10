@@ -190,7 +190,7 @@ public class Menu {
 		while ((choice = MenuOptions.PartOptions()) != EPartsMenu.EXIT){
 			switch (choice) {
 			case ADD:
-				System.out.println("Add");
+				com.sunbeam.service.Part_Service.insertToDB();
 				break;
 				
 			case EDIT:
