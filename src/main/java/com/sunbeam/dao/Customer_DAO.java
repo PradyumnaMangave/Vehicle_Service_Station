@@ -69,4 +69,9 @@ public class Customer_DAO {
 		return f;
 		
 	}
+
+	public static Customer_Entity SpeciShow(int id) {
+		
+		return null;
+	}
 }
