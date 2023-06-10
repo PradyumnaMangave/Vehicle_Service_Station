@@ -32,7 +32,7 @@ public class Part_Entity {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	public Part_Entity(int id, String name, BigDecimal price, String description) {
+	public Part_Entity(int id, String name, String description, BigDecimal price) {
 		super();
 		this.id = id;
 		this.name = name;
