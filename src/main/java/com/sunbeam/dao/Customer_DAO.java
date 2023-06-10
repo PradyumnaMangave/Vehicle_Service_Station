@@ -2,6 +2,8 @@ package com.sunbeam.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.List;
 
 import com.sunbeam.entities.Customer_Entity;
 import com.sunbeam.util.DatabaseConnectivity;
@@ -47,4 +49,24 @@ public class Customer_DAO {
 	}
 	return f;	
 }
+
+
+	public static boolean ShowAll(List<Customer_Entity> customerList) {
+		boolean f = false;
+		try {
+		Connection con = DatabaseConnectivity.create();
+		String SQL = "SELECT * FROM customer";
+		PreparedStatement pst = con.prepareStatement(SQL);
+		
+		ResultSet rs = pst.executeQuery();
+		while(rs.next()) {
+		Customer_Entity customer = new Customer_Entity ( rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5));
+				customerList.add(customer);
+		}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return f;
+		
+	}
 }
