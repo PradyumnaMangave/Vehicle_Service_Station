@@ -55,4 +55,12 @@ public class Customer_Service {
 		}
 		
 	}
+	
+	public static void SpeciShow() {
+	    System.out.println("Enter Specific Customer's ID:");
+	    int id = new Scanner(System.in).nextInt();
+	    
+	    boolean customer = com.sunbeam.dao.Customer_DAO.SpeciShow(id);
+	    
+	}
 }
