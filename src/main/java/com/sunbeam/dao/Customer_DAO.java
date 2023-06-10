@@ -94,4 +94,64 @@ public class Customer_DAO {
 	    
 	   
 	}
+
+	public static boolean update(int id,String mobile,String address) {
+		boolean f = false;
+	try {
+		Connection con = DatabaseConnectivity.create();
+		String SQL = "UPDATE customer SET mobile = ? , address = ? WHERE id = ?";
+		PreparedStatement pst = con.prepareStatement(SQL);
+		pst.setString(1, mobile);
+		pst.setString(2, address);
+		pst.setInt(3, id);
+		 int rowsAffected = pst.executeUpdate();
+		 if (rowsAffected > 0) 
+		 {
+			 f = true;
+	        }	
+	} catch (Exception e) {
+		e.printStackTrace();
+	}
+	return f;
+	}
+
+	public static boolean updateMobile(int id, String mobile) {
+		
+		boolean f = false;
+		try {
+			Connection con = DatabaseConnectivity.create();
+			String SQL = "UPDATE customer SET mobile = ? WHERE id = ?";
+			PreparedStatement pst = con.prepareStatement(SQL);
+			pst.setString(1, mobile);
+			pst.setInt(2, id);
+			 int rowsAffected = pst.executeUpdate();
+			 if (rowsAffected > 0) 
+			 {
+				 f = true;
+		        }	
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return f;
+		}
+
+	public static boolean updateAddress(int id, String address) {
+		
+		boolean f = false;
+		try {
+			Connection con = DatabaseConnectivity.create();
+			String SQL = "UPDATE customer SET address = ? WHERE id = ?";
+			PreparedStatement pst = con.prepareStatement(SQL);
+			pst.setString(1, address);
+			pst.setInt(2, id);
+			 int rowsAffected = pst.executeUpdate();
+			 if (rowsAffected > 0) 
+			 {
+				 f = true;
+		        }	
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return f;
+		}
 }
