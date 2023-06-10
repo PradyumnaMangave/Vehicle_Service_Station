@@ -206,7 +206,7 @@ public class Menu {
 				break;
 				
 			case SPECI_SHOW:
-				System.out.println("Show specific");
+				com.sunbeam.service.Part_Service.SpeciShow();
 				break;
 
 			default:
