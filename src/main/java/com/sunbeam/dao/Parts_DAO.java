@@ -28,4 +28,29 @@ public class Parts_DAO {
 		return f;
 	}
 
+	public static boolean SpeciShow(int id) {
+		boolean f = false;
+		try {
+			Connection con = DatabaseConnectivity.create();
+			String SQL = "SELECT * from Parts WHERE id = ?";
+			PreparedStatement pst = con.prepareStatement(SQL);
+			pst.setInt(1, id);
+			ResultSet rs=pst.executeQuery();
+			
+			if(rs.next()) {
+				Part_Entity part_Entity = new Part_Entity(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getBigDecimal(4));
+				System.out.println(part_Entity);
+			}
+			else {
+				System.out.println("ID not found... Check it again...");
+			}
+			
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return false;
+	}
+
 }
