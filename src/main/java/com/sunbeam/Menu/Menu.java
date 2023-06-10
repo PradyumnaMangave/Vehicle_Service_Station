@@ -60,7 +60,7 @@ public class Menu {
 				break;
 				
 			case SPECIADD:
-				System.out.println("Show Specific Customer");
+				com.sunbeam.service.Customer_Service.SpeciShow();
 				break;
 				
 			default:
