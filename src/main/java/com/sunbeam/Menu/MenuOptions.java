@@ -27,7 +27,7 @@ enum EServiceRequestSubProcess{
 }
 
 enum EPartsMenu{
-	EXIT,ADD,SPECI_SHOW,EDIT,DELETE,ALL,DEFAULT
+	EXIT,ADD,EDIT,DELETE,ALL,SPECI_SHOW,DEFAULT
 
 }
 

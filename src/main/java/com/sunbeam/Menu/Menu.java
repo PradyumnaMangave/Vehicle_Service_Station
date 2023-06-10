@@ -202,7 +202,7 @@ public class Menu {
 				break;
 				
 			case ALL:
-				System.out.println("Show all");
+				com.sunbeam.service.Part_Service.ShowAll();
 				break;
 				
 			case SPECI_SHOW:
