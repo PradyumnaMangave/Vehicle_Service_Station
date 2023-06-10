@@ -63,4 +63,27 @@ public class Customer_Service {
 	    boolean customer = com.sunbeam.dao.Customer_DAO.SpeciShow(id);
 	    
 	}
+	
+	public static void update() {
+		System.out.println("Enter ID in which You want to update data::");
+		int id = new Scanner(System.in).nextInt();
+		System.out.println("Add mobile number to update::");
+		String mobile = new Scanner(System.in).nextLine();
+		System.out.println("Add Address to update");
+		String address = new Scanner(System.in).nextLine();
+		boolean customer = false;
+		
+		if (!mobile.isEmpty() && !address.isEmpty()) {
+	        customer = com.sunbeam.dao.Customer_DAO.update(id, mobile, address);
+	    } else if (!mobile.isEmpty()) {
+	        customer = com.sunbeam.dao.Customer_DAO.updateMobile(id, mobile);
+	    } else if (!address.isEmpty()) {
+	        customer = com.sunbeam.dao.Customer_DAO.updateAddress(id, address);
+	    }
+		 if (customer) {
+		        System.out.println("Customer updated successfully");
+		    } else {
+		        System.out.println("Failed to update customer");
+		    }
+	}
 }
