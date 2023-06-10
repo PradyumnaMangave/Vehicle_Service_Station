@@ -48,7 +48,7 @@ public class Menu {
 				break;
 				
 			case EDIT:
-				System.out.println("Update customer");
+				com.sunbeam.service.Customer_Service.update();
 				break;
 				
 			case DELETE:
