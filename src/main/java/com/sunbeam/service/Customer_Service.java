@@ -1,7 +1,10 @@
 package com.sunbeam.service;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
+import com.sunbeam.dao.Customer_DAO;
 import com.sunbeam.entities.Customer_Entity;
 
 public class Customer_Service {
@@ -39,5 +42,17 @@ public class Customer_Service {
 		{
 			System.out.println("Check ID again..");
 		}
+	}
+	
+	public static void ShowAll() {
+		System.out.println("Showing All customers");
+		List<Customer_Entity> customerList = new ArrayList<>();
+		Customer_DAO custDAO = new Customer_DAO();
+		custDAO.ShowAll(customerList);
+		for (Customer_Entity customer_Entity : customerList) {
+			System.out.println(customer_Entity);
+			
+		}
+		
 	}
 }
