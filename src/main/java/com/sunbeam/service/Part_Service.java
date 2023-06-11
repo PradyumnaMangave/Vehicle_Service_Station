@@ -44,4 +44,19 @@ public class Part_Service {
 		com.sunbeam.dao.Parts_DAO.insertToDB(parts);
 		System.out.println("Data Inserted Successfully");
 	}
+	
+	public static void Update() {
+		System.out.println("Enter Id of Part to update::");
+		int id =new Scanner(System.in).nextInt();
+		System.out.println("Enter price to update::");
+		BigDecimal price = new Scanner(System.in).nextBigDecimal();
+		
+		boolean customer=com.sunbeam.dao.Parts_DAO.Update(id, price);
+		 if (customer) {
+		        System.out.println("Customer updated successfully");
+		    } else {
+		        System.out.println("Failed to update customer");
+		    }
+		
+	}
 }
