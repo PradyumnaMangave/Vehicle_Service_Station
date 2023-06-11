@@ -1,5 +1,6 @@
 package com.sunbeam.dao;
 
+import java.math.BigDecimal;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -70,5 +71,28 @@ public class Parts_DAO {
 		}
 		return false;
 	}
+
+
+	
+
+	public static boolean Update(int id, BigDecimal price){
+		
+		boolean f = false;
+		try {
+			Connection con = DatabaseConnectivity.create();
+			String SQL = "UPDATE customer SET price = ? WHERE id = ?";
+			PreparedStatement pst = con.prepareStatement(SQL);
+			pst.setBigDecimal(1, price);
+			pst.setInt(2, id);
+			 int rowsAffected = pst.executeUpdate();
+			 if (rowsAffected > 0) 
+			 {
+				 f = true;
+		        }	
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return f;
+		}
 	
 }
