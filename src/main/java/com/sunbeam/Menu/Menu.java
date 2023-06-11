@@ -194,7 +194,7 @@ public class Menu {
 				break;
 				
 			case EDIT:
-				System.out.println("Update");
+				com.sunbeam.service.Part_Service.Update();
 				break;
 				
 			case DELETE:
