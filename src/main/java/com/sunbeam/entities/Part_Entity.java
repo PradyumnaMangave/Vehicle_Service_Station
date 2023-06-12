@@ -6,8 +6,8 @@ public class Part_Entity {
 	
 	private int id;
 	private String name;
-	private BigDecimal price;
 	private String description;
+	private double price;
 	public int getId() {
 		return id;
 	}
@@ -20,28 +20,30 @@ public class Part_Entity {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public BigDecimal getPrice() {
-		return price;
-	}
-	public void setPrice(BigDecimal price) {
-		this.price = price;
-	}
 	public String getDescription() {
 		return description;
 	}
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	public Part_Entity(int id, String name, String description, BigDecimal price) {
+	public double getPrice() {
+		return price;
+	}
+	public void setPrice(double price) {
+		this.price = price;
+	}
+	public Part_Entity(int id, String name, String description, double price) {
 		super();
 		this.id = id;
 		this.name = name;
-		this.price = price;
 		this.description = description;
+		this.price = price;
 	}
 	@Override
 	public String toString() {
-		return "PartsInfo [id=" + id + ", name=" + name + ", price=" + price + ", description=" + description + "]";
+		return "Part_Entity [id=" + id + ", name=" + name + ", description=" + description + ", price=" + price + "]";
 	}
+	
+	
 	
 }
