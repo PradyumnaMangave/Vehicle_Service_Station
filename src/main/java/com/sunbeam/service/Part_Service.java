@@ -35,9 +35,9 @@ public class Part_Service {
 		System.out.println("Enter Part Name::");
 		String name = new Scanner(System.in).next();
 		System.out.println("Enter Description::");
-		String description = new Scanner(System.in).next();
+		String description = new Scanner(System.in).nextLine();
 		System.out.println("Enter Price::");
-		BigDecimal price = new Scanner(System.in).nextBigDecimal();
+		double price = new Scanner(System.in).nextDouble();
 
 		Part_Entity parts = new Part_Entity(id,name,description,price);
 
@@ -49,14 +49,24 @@ public class Part_Service {
 		System.out.println("Enter Id of Part to update::");
 		int id =new Scanner(System.in).nextInt();
 		System.out.println("Enter price to update::");
-		BigDecimal price = new Scanner(System.in).nextBigDecimal();
+		double price = new Scanner(System.in).nextDouble();
 		
-		boolean customer=com.sunbeam.dao.Parts_DAO.Update(id, price);
-		 if (customer) {
+		boolean parts=com.sunbeam.dao.Parts_DAO.Update(id, price);
+		 if (parts) {
 		        System.out.println("Customer updated successfully");
 		    } else {
 		        System.out.println("Failed to update customer");
 		    }
-		
+		}
+	
+	public static void delete() {
+		System.out.println("Enter ID of part to delete::");
+		int id = new Scanner(System.in).nextInt();
+		boolean parts=com.sunbeam.dao.Parts_DAO.delete(id);
+		if (parts) {
+	        System.out.println("Customer Deleted successfully");
+	    } else {
+	        System.out.println("Failed to delete customer");
+	    }
 	}
 }
