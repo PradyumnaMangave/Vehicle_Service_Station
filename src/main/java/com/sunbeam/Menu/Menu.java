@@ -75,7 +75,7 @@ public class Menu {
 		while((choice = MenuOptions.VehicleOptions()) != EVehicleMenu.EXIT) {
 			switch (choice) {
 			case ADD:
-				System.out.println("Add Vehicle");
+				com.sunbeam.service.Vehicle_service.insertToDb();
 				break;
 				
 			case EDIT:
