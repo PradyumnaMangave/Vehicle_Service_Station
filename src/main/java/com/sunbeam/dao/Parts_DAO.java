@@ -1,6 +1,5 @@
 package com.sunbeam.dao;
 
-import java.math.BigDecimal;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -19,7 +18,7 @@ public class Parts_DAO {
 			PreparedStatement pst = con.prepareStatement(SQL);
 			ResultSet rs = pst.executeQuery();
 			while(rs.next()) {
-				Part_Entity part_Entity = new Part_Entity(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getBigDecimal(4));
+				Part_Entity part_Entity = new Part_Entity(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getFloat(4));
 				partList.add(part_Entity);
 			}
 			
@@ -39,7 +38,7 @@ public class Parts_DAO {
 			ResultSet rs=pst.executeQuery();
 			
 			if(rs.next()) {
-				Part_Entity part_Entity = new Part_Entity(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getBigDecimal(4));
+				Part_Entity part_Entity = new Part_Entity(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getDouble(4));
 				System.out.println(part_Entity);
 			}
 			else {
@@ -63,7 +62,7 @@ public class Parts_DAO {
 			pst.setInt(1, parts.getId());
 			pst.setString(2, parts.getName());
 			pst.setString(3, parts.getDescription());
-			pst.setBigDecimal(4, parts.getPrice());
+			pst.setDouble(4, parts.getPrice());
 			pst.executeUpdate();
 			
 		} catch (Exception e) {
@@ -72,19 +71,17 @@ public class Parts_DAO {
 		return false;
 	}
 
-
-	
-
-	public static boolean Update(int id, BigDecimal price){
+	public static boolean Update(int id, double price){
 		
 		boolean f = false;
 		try {
 			Connection con = DatabaseConnectivity.create();
 			String SQL = "UPDATE customer SET price = ? WHERE id = ?";
 			PreparedStatement pst = con.prepareStatement(SQL);
-			pst.setBigDecimal(1, price);
+			pst.setDouble(1, price);
 			pst.setInt(2, id);
 			 int rowsAffected = pst.executeUpdate();
+			 System.out.println(rowsAffected);
 			 if (rowsAffected > 0) 
 			 {
 				 f = true;
@@ -94,5 +91,22 @@ public class Parts_DAO {
 		}
 		return f;
 		}
-	
+
+	public static boolean delete(int id) {
+		boolean f = false;
+		try {
+			Connection con = DatabaseConnectivity.create();
+			String SQL = "DELETE from parts WHERE id = ?";
+			PreparedStatement pst = con.prepareStatement(SQL);
+			pst.setInt(1, id);
+			int count = pst.executeUpdate();
+			if(count != 0)
+			f=true;
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return f;
+	}
 }
