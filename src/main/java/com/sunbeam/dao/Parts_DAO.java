@@ -76,7 +76,7 @@ public class Parts_DAO {
 		boolean f = false;
 		try {
 			Connection con = DatabaseConnectivity.create();
-			String SQL = "UPDATE customer SET price = ? WHERE id = ?";
+			String SQL = "UPDATE parts SET price = ? WHERE id = ?";
 			PreparedStatement pst = con.prepareStatement(SQL);
 			pst.setDouble(1, price);
 			pst.setInt(2, id);
