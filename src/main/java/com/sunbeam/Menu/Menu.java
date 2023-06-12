@@ -198,7 +198,7 @@ public class Menu {
 				break;
 				
 			case DELETE:
-				System.out.println("Delete");
+				com.sunbeam.service.Part_Service.delete();
 				break;
 				
 			case ALL:
