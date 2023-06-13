@@ -64,6 +64,13 @@ public class Customer_Service {
 	    
 	}
 	
+	public static Customer_Entity SpeciShow1() {
+		System.out.println("Enter Customer's Mobile Number::");
+		String mobile =new Scanner(System.in).next();
+		Customer_Entity customer = com.sunbeam.dao.Customer_DAO.SpeciShow(mobile);
+		return customer;
+	}
+	
 	public static void update() {
 		System.out.println("Enter ID in which You want to update data::");
 		int id = new Scanner(System.in).nextInt();
