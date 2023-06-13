@@ -7,7 +7,7 @@ enum EMainMenu{
 }
 
 enum ECustomerMenu{
-	EXIT,ADD,EDIT,DELETE,ALL,SPECI_SHOW,DEFAULT
+	EXIT,ADD,EDIT,DELETE,ALL,SPECI_SHOW,SPECI_SHOW_MOBILE,DEFAULT
 }
 
 enum EVehicleMenu{
@@ -59,7 +59,8 @@ public class MenuOptions {
 		System.out.println("2. Edit Customer");
 		System.out.println("3. Delete Customer");
 		System.out.println("4. Show All Customers");
-		System.out.println("5. Show Specific Customer");
+		System.out.println("5. Show Specific Customer By ID");
+		System.out.println("6. Show Specific Customer By Mobile Number");
 		System.out.print("Enter Your choice:: ");
 		int choice = new Scanner(System.in).nextInt();
 		if(choice < 0 || choice > 5)
