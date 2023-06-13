@@ -51,6 +51,22 @@ public class Vehicle_DAO {
 		return vehicles ;
 	}
 
+	public void EnterIntoVehicle(String vehicle_number,int customer_id,int vehicle_id) {
+			try {
+				Connection con = DatabaseConnectivity.create();
+				String SQL = "INSERT into customer_vehicle (vehicle_number,customer_id,vehicle_id) values (?,?,?)";
+				PreparedStatement pst = con.prepareStatement(SQL);
+				pst.setString(1, vehicle_number);
+				pst.setInt(2, customer_id);
+				pst.setInt(3, vehicle_id);
+				pst.executeUpdate();
+				
+				
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+	}
+
 	
 
 }
