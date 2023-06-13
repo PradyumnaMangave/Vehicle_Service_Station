@@ -15,5 +15,10 @@ class CustomerServiceTest {
 	void testDelete() {
 		Customer_Service.Delete();
 	}
+	
+	@Test
+	void testUpdate() {
+		Customer_Service.update();
+	}
 
 }
