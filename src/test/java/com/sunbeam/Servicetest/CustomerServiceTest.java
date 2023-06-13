@@ -25,5 +25,10 @@ class CustomerServiceTest {
 	void testShowAll() {
 		Customer_Service.ShowAll();
 	}
+	
+	@Test
+	void testSpeciShow() {
+		Customer_Service.SpeciShow();
+	}
 
 }
