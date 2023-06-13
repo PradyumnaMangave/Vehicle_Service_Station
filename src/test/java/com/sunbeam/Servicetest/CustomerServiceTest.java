@@ -20,5 +20,10 @@ class CustomerServiceTest {
 	void testUpdate() {
 		Customer_Service.update();
 	}
+	
+	@Test
+	void testShowAll() {
+		Customer_Service.ShowAll();
+	}
 
 }
