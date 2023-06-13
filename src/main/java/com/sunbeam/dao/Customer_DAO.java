@@ -154,4 +154,24 @@ public class Customer_DAO {
 		}
 		return f;
 		}
+
+	public static Customer_Entity SpeciShow(String mobile) {
+		
+		try {
+			Connection con = DatabaseConnectivity.create();
+			String SQL = "SELECT * FROM customer WHERE mobile = ?";
+			PreparedStatement pst = con.prepareStatement(SQL);
+			pst.setString(1, mobile);
+			ResultSet rs = pst.executeQuery();
+			if(rs.next()) {
+				Customer_Entity customer = new Customer_Entity ( rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5));
+				return customer;
+				}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+		
+	}
 }
