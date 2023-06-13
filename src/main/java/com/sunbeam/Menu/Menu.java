@@ -63,6 +63,10 @@ public class Menu {
 				com.sunbeam.service.Customer_Service.SpeciShow();
 				break;
 				
+			case SPECI_SHOW_MOBILE:
+				com.sunbeam.service.Customer_Service.SpeciShow1();
+				break;
+				
 			default:
 				System.out.println("Wrong Choice Selected");
 				break;
