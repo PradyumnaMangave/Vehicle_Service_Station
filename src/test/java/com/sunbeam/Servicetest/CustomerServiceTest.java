@@ -10,5 +10,10 @@ class CustomerServiceTest {
 	void testinsertTodb() {
 		Customer_Service.insertToDB();
 	}
+	
+	@Test
+	void testDelete() {
+		Customer_Service.Delete();
+	}
 
 }
