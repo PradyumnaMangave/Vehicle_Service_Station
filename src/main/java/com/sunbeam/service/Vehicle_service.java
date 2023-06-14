@@ -1,10 +1,12 @@
 package com.sunbeam.service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
 import com.sunbeam.dao.Vehicle_DAO;
 import com.sunbeam.entities.Customer_Entity;
+import com.sunbeam.entities.NewVehicleEntity;
 import com.sunbeam.entities.Vehicle_Entity;
 
 public class Vehicle_service {
@@ -61,4 +63,17 @@ public class Vehicle_service {
 		return id;
 		
 	}
+
+	public static void SpeciCustomer() {
+		Customer_Entity customer = Customer_Service.SpeciShow1();
+		System.out.println("Customer ID for mobile number "+ customer.getMobile() + " is " + customer.getId() + " And Customer Name is " + customer.getName() +"...");
+		List<NewVehicleEntity> vehicleList = new ArrayList<NewVehicleEntity> ();
+	    Vehicle_DAO vehicle_DAO = new Vehicle_DAO();
+	    vehicle_DAO.speciCustomer(vehicleList,customer);
+	    
+	    for (NewVehicleEntity newVehicleEntity : vehicleList) {
+			System.out.println(newVehicleEntity);
+		}
+	    
+	}	
 }
