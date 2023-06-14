@@ -1,5 +1,7 @@
 package com.sunbeam.dao;
 
+import static org.hamcrest.CoreMatchers.nullValue;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -156,7 +158,7 @@ public class Customer_DAO {
 		}
 
 	public static Customer_Entity SpeciShow(String mobile) {
-		
+		Customer_Entity customer=null;
 		try {
 			Connection con = DatabaseConnectivity.create();
 			String SQL = "SELECT * FROM customer WHERE mobile = ?";
@@ -164,14 +166,14 @@ public class Customer_DAO {
 			pst.setString(1, mobile);
 			ResultSet rs = pst.executeQuery();
 			if(rs.next()) {
-				Customer_Entity customer = new Customer_Entity ( rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5));
-				System.out.println(customer);
+				customer = new Customer_Entity ( rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5));
+			
 				}
 			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return null;
+		return customer;
 		
 		
 	}
