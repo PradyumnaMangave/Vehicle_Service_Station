@@ -16,4 +16,8 @@ class VehicleServiceTest {
 		Vehicle_service.vehicle_add();
 	}
 
+	@Test
+	void testSpeciShow() {
+		Vehicle_service.SpeciCustomer();
+	}
 }
