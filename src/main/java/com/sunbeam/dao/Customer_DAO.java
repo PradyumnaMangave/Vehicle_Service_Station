@@ -165,7 +165,7 @@ public class Customer_DAO {
 			ResultSet rs = pst.executeQuery();
 			if(rs.next()) {
 				Customer_Entity customer = new Customer_Entity ( rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5));
-				return customer;
+				System.out.println(customer);
 				}
 			
 		} catch (Exception e) {
@@ -173,5 +173,7 @@ public class Customer_DAO {
 		}
 		return null;
 		
+		
 	}
+	
 }
