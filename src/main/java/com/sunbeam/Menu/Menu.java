@@ -64,7 +64,7 @@ public class Menu {
 				break;
 				
 			case SPECI_SHOW_MOBILE:
-				com.sunbeam.service.Customer_Service.SpeciShow1();
+				System.out.println(com.sunbeam.service.Customer_Service.SpeciShow1()); 
 				break;
 				
 			default:
@@ -95,7 +95,7 @@ public class Menu {
 				break;
 				
 			case SPECI_SHOW:
-				System.out.println("Show Specific Vehicles");
+				com.sunbeam.service.Vehicle_service.SpeciCustomer();
 				break;
 				
 			default:
