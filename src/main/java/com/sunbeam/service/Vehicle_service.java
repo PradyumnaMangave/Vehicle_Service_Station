@@ -113,4 +113,16 @@ public class Vehicle_service {
 			System.out.println("Customer not found...");
 		}
 	}
+	
+	public static void Delete() {
+		System.out.println("Enter Vehicle Number of Vehicle to delete::");
+		String vehicle_number = new Scanner(System.in).next().toUpperCase();
+		if(Vehicle_DAO.searchNumber(vehicle_number)) {
+			Vehicle_DAO.Delete(vehicle_number);
+			System.out.println("Vehicle Deleted Successfully...");
+		}
+		else {
+			System.out.println("Vehicle does not found...Check vehicle number again...");
+		}
+	}
 }
