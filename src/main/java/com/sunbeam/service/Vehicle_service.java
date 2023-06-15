@@ -75,5 +75,17 @@ public class Vehicle_service {
 			System.out.println(newVehicleEntity);
 		}
 	    
-	}	
+	}
+	
+	public static void ShowAll() {
+		Customer_Entity customer = null;
+		List<NewVehicleEntity> vehicleList = new ArrayList<NewVehicleEntity> ();
+	    Vehicle_DAO vehicle_DAO = new Vehicle_DAO();
+	    vehicle_DAO.ShowAll(vehicleList,customer);
+	    
+	    for (NewVehicleEntity newVehicleEntity : vehicleList) {
+			System.out.println(newVehicleEntity);
+		}
+		
+	}
 }
