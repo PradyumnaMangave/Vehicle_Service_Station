@@ -20,4 +20,9 @@ class VehicleServiceTest {
 	void testSpeciShow() {
 		Vehicle_service.SpeciCustomer();
 	}
+	
+	@Test
+	void testShowAll() {
+		Vehicle_service.ShowAll();
+	}
 }
