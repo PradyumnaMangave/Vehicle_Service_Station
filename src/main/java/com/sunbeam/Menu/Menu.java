@@ -91,7 +91,7 @@ public class Menu {
 				break;
 				
 			case ALL:
-				System.out.println("Show all Vehicles");
+				com.sunbeam.service.Vehicle_service.ShowAll();
 				break;
 				
 			case SPECI_SHOW:
