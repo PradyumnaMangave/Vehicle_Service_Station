@@ -62,5 +62,10 @@ class CustomerDAOTest {
 		Customer_DAO.SpeciShow(null);
 		System.out.println("Tested");
 	}
-
+	
+	@Test
+	void testShowAll() {
+		Customer_DAO.ShowAll(null);
+		System.out.println("tested");
+	}
 }
