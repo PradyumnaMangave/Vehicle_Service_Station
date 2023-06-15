@@ -83,7 +83,7 @@ public class Menu {
 				break;
 				
 			case EDIT:
-				System.out.println("Update Vehicle");
+				com.sunbeam.service.Vehicle_service.Update();;
 				break;
 				
 			case DELETE:
