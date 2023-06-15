@@ -88,4 +88,29 @@ public class Vehicle_service {
 		}
 		
 	}
+	
+	public static void Update() {
+		Customer_Entity customer=null;
+		System.out.println("Enter vehicle number you want to update::");
+		String Old_Vehicle_Number = new Scanner(System.in).next().toUpperCase();
+		List<NewVehicleEntity> vehicleList = new ArrayList<NewVehicleEntity> ();
+	    Vehicle_DAO vehicle_DAO = new Vehicle_DAO();
+	    vehicle_DAO.speciCustomerByVehiNum(vehicleList,customer, Old_Vehicle_Number);
+	    
+	    for (NewVehicleEntity newVehicleEntity : vehicleList) {
+			System.out.println(newVehicleEntity);
+		}
+		
+		
+		if(Vehicle_DAO.searchNumber(Old_Vehicle_Number)) 
+		{
+			System.out.println("Enter new Vehicle number you want to update::");
+			String New_Vehicle_Number = new Scanner(System.in).next().toUpperCase();
+			Vehicle_DAO.update_Number(Old_Vehicle_Number,New_Vehicle_Number);
+			System.out.println("Vehicle Number Updated Successfully...");
+			}
+		else {
+			System.out.println("Customer not found...");
+		}
+	}
 }
