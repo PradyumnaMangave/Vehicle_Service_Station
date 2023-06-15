@@ -151,4 +151,23 @@ public class Vehicle_DAO {
 		}
 		
 	}
+
+	public static boolean Delete(String vehicle_number) {
+		boolean vehicleDeleted = false;
+		try {
+			Connection con = DatabaseConnectivity.create();
+			String SQL = "DELETE from customer_vehicle WHERE vehicle_number = ?";
+			PreparedStatement pst = con.prepareStatement(SQL);
+			pst.setString(1, vehicle_number);
+			boolean rs =pst.execute();
+			while(rs) {
+				vehicleDeleted = true;
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return vehicleDeleted;
+		
+	}
 }
