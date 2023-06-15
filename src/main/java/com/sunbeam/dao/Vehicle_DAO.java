@@ -6,9 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-
 import com.sunbeam.entities.Customer_Entity;
-import com.sunbeam.entities.Customer_Vehicle_Entity;
 import com.sunbeam.entities.NewVehicleEntity;
 import com.sunbeam.entities.Vehicle_Entity;
 import com.sunbeam.util.DatabaseConnectivity;
@@ -100,5 +98,57 @@ public class Vehicle_DAO {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+	}
+
+	public static void update_Number(String old_Vehicle_Number, String new_Vehicle_Number) {
+		try {
+			Connection con = DatabaseConnectivity.create();
+			String SQL = "UPDATE customer_vehicle SET vehicle_number=? Where vehicle_number=?;";
+			PreparedStatement pst = con.prepareStatement(SQL);
+			
+			pst.setString(2, old_Vehicle_Number);
+			pst.setString(1, new_Vehicle_Number);
+			pst.execute();	
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+	}
+
+	public static boolean searchNumber(String old_Vehicle_Number) {
+		boolean vehicleFound = false;
+		try {
+			Connection con = DatabaseConnectivity.create();
+			String SQL = "Select * from customer_vehicle Where vehicle_number=?";
+			PreparedStatement pst = con.prepareStatement(SQL);
+			pst.setString(1, old_Vehicle_Number);
+			ResultSet rs= pst.executeQuery();
+			if(rs.next()) {
+				vehicleFound = true;
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return vehicleFound;
+	}
+
+	public void speciCustomerByVehiNum(List<NewVehicleEntity> vehicleList, Customer_Entity customer,String vehicle_number) {
+		try {
+			Connection con = DatabaseConnectivity.create();
+			String SQL = "SELECT c.name ,v.company, v.model, cv.vehicle_number FROM vehicle v INNER JOIN customer_vehicle cv ON v.id = cv.vehicle_id INNER JOIN customer c ON c.id=cv.customer_id WHERE cv.vehicle_number = ?";
+			PreparedStatement pst = con.prepareStatement(SQL);
+			pst.setString(1, vehicle_number);
+			ResultSet rs = pst.executeQuery();
+			while(rs.next()) {
+				NewVehicleEntity vehicle = new NewVehicleEntity(rs.getString(1),rs.getString(4), rs.getString(2), rs.getString(3));
+				vehicleList.add(vehicle);
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
 	}
 }
