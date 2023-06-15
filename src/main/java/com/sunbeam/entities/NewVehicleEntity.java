@@ -1,10 +1,11 @@
 package com.sunbeam.entities;
 
 public class NewVehicleEntity {
-	
+	private String name;
 	private String vehicle_number;
 	private String company;
 	private String model;
+	
 	public String getVehicle_number() {
 		return vehicle_number;
 	}
@@ -29,9 +30,18 @@ public class NewVehicleEntity {
 		this.company = company;
 		this.model = model;
 	}
+	public NewVehicleEntity(String name,String vehicle_number, String company, String model) {
+		super();
+		this.name=name;
+		this.vehicle_number = vehicle_number;
+		this.company = company;
+		this.model = model;
+		
+	}
 	@Override
 	public String toString() {
-		return "NewVehicleEntity [vehicle_number=" + vehicle_number + ", company=" + company + ", model=" + model + "]";
+		return "NewVehicleEntity [ "+"Customer Name: "+this.name+" , "+" Vehicle Number = " + vehicle_number + ", Company = " + company + ", Model = " + model + "]";
 	}
+	
 	
 }
