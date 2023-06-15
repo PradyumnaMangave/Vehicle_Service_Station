@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import org.junit.jupiter.api.Test;
 
 import com.sunbeam.dao.Customer_DAO;
+import com.sunbeam.dao.Vehicle_DAO;
 import com.sunbeam.entities.Customer_Entity;
 
 class CustomerDAOTest {
@@ -55,5 +56,11 @@ class CustomerDAOTest {
 	    assertFalse(updateSuccessful);
 	}
 
+	@Test 
+	void testSpecificCustomer() {
+		int id = 14;
+		Customer_DAO.SpeciShow(null);
+		System.out.println("Tested");
+	}
 
 }
