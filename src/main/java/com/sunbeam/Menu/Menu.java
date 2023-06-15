@@ -87,7 +87,7 @@ public class Menu {
 				break;
 				
 			case DELETE:
-				System.out.println("Delete Vehicle");
+				com.sunbeam.service.Vehicle_service.Delete();
 				break;
 				
 			case ALL:
