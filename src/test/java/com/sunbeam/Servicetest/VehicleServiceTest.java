@@ -22,7 +22,18 @@ class VehicleServiceTest {
 	}
 	
 	@Test
+	void testUpdateVehicle() {
+		Vehicle_service.Update();
+	}
+	
+	@Test
 	void testShowAll() {
 		Vehicle_service.ShowAll();
 	}
+	
+	@Test
+	void testDelete() {
+		Vehicle_service.Delete();
+	}
+	
 }
