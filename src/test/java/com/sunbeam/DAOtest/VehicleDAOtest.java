@@ -1,7 +1,5 @@
 package com.sunbeam.DAOtest;
 
-import static org.junit.Assert.assertTrue;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -57,6 +55,14 @@ class VehicleDAOtest {
 	    String new_vehicle_number="MH23FM9306";
 	    Vehicle_DAO.update_Number(old_vehicle_number, new_vehicle_number);
 	    System.out.println("vehicle number updated...");
+	}
+	
+	@Test
+	public void testSearchNumber() {
+		 String existingNumber = "MH23FM96";
+		 Vehicle_DAO vehi = new Vehicle_DAO();
+	     boolean result1 = vehi.searchNumber(existingNumber);
+	     System.out.println("Vehicle number found: " + result1);
 	}
 }
 
