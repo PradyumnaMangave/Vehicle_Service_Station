@@ -19,5 +19,11 @@ class PartsDAOTest {
 			System.out.println(part_Entity);
 		}
 	}
-
+	
+	@Test
+	void testSpeciShow() {
+		int id = 7;
+		System.out.println(Parts_DAO.SpeciShow(id));
+		
+	}
 }
