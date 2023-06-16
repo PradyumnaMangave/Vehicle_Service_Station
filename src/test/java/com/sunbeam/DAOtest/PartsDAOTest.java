@@ -1,5 +1,7 @@
 package com.sunbeam.DAOtest;
 
+import static org.junit.Assert.assertTrue;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,6 +26,17 @@ class PartsDAOTest {
 	void testSpeciShow() {
 		int id = 7;
 		System.out.println(Parts_DAO.SpeciShow(id));
-		
 	}
+	
+	@Test
+	public void testInsertToDB() {
+	    Part_Entity parts = new Part_Entity(0, null, null, 0);
+	    parts.setId(26);
+	    parts.setName("Part 2");
+	    parts.setDescription("Description 2");
+	    parts.setPrice(10.0);
+	    boolean result = Parts_DAO.insertToDB(parts);
+	    System.out.println("Data inserted");
+	}
+	
 }
