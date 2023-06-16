@@ -159,8 +159,8 @@ public class Vehicle_DAO {
 			String SQL = "DELETE from customer_vehicle WHERE vehicle_number = ?";
 			PreparedStatement pst = con.prepareStatement(SQL);
 			pst.setString(1, vehicle_number);
-			boolean rs =pst.execute();
-			while(rs) {
+			int rs =pst.executeUpdate();
+			if(rs==1) {
 				vehicleDeleted = true;
 			}
 			
