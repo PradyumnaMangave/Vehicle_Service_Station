@@ -50,6 +50,14 @@ class VehicleDAOtest {
         vehi.ShowAll(vehicleList, cust);
         System.out.println(vehicleList);
     }
+	
+	@Test
+	public void testUpdate() {
+	    String old_vehicle_number="MH09AU4678";
+	    String new_vehicle_number="MH23FM9306";
+	    Vehicle_DAO.update_Number(old_vehicle_number, new_vehicle_number);
+	    System.out.println("vehicle number updated...");
+	}
 }
 
 
