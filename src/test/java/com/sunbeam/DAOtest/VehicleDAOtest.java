@@ -3,6 +3,7 @@ package com.sunbeam.DAOtest;
 import org.junit.jupiter.api.Test;
 
 import com.sunbeam.dao.Vehicle_DAO;
+import com.sunbeam.entities.Customer_Vehicle_Entity;
 import com.sunbeam.entities.Vehicle_Entity;
 
 class VehicleDAOtest {
@@ -17,5 +18,16 @@ class VehicleDAOtest {
 		VehiDao.insertToDB(vehicle);
 		System.out.println("Done");
 	}
+	
+	@Test
+	void testEnterIntoVehicle() {
+		Vehicle_DAO vehi = new Vehicle_DAO();
+		vehi.EnterIntoVehicle("MH09FG5432", 8, 7);
+		System.out.println("Done");
+		}
 
-}
+	}
+
+	
+
+
