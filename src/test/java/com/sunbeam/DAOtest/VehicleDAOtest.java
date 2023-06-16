@@ -37,11 +37,19 @@ class VehicleDAOtest {
 		List<NewVehicleEntity> list = new ArrayList<NewVehicleEntity>();
 		Vehicle_DAO vehi = new Vehicle_DAO();
 		Customer_Entity cust = new Customer_Entity(0, null, null, null, null);
-		cust.setId(9);
+		cust.setId(14);
 		vehi.speciCustomer(list, cust);
-		assertTrue(true);
-		System.out.println("done");
+		System.out.println(list);
 	}
+	
+	@Test
+    public void testShowAll() {
+        List<NewVehicleEntity> vehicleList = new ArrayList<>();
+        Customer_Entity cust = new Customer_Entity(0, null, null, null, null);
+        Vehicle_DAO vehi = new Vehicle_DAO();
+        vehi.ShowAll(vehicleList, cust);
+        System.out.println(vehicleList);
+    }
 }
 
 
