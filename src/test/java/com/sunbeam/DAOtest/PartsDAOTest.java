@@ -1,7 +1,5 @@
 package com.sunbeam.DAOtest;
 
-import static org.junit.Assert.assertTrue;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -38,5 +36,11 @@ class PartsDAOTest {
 	    boolean result = Parts_DAO.insertToDB(parts);
 	    System.out.println("Data inserted");
 	}
+	
+	@Test
+	public void testUpdate() {
+		    boolean result = Parts_DAO.Update(1, 20.0);
+		    System.out.println("Data Updated");
+		}
 	
 }
