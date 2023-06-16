@@ -40,6 +40,7 @@ public class Parts_DAO {
 			if(rs.next()) {
 				Part_Entity part_Entity = new Part_Entity(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getDouble(4));
 				System.out.println(part_Entity);
+				f=true;
 			}
 			else {
 				System.out.println("ID not found... Check it again...");
@@ -50,7 +51,7 @@ public class Parts_DAO {
 			e.printStackTrace();
 		}
 
-		return false;
+		return f;
 	}
 
 	public static boolean insertToDB(Part_Entity parts) {
