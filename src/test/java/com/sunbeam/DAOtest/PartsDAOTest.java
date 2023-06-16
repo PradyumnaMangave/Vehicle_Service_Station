@@ -43,4 +43,9 @@ class PartsDAOTest {
 		    System.out.println("Data Updated");
 		}
 	
+	@Test
+	public void testDelete() {
+	    boolean result = Parts_DAO.delete(1);
+	    System.out.println("Data deleted");
+	}
 }
