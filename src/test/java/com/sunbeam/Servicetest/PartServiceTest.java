@@ -8,7 +8,7 @@ class PartServiceTest {
 
 	@Test
 	void testShowAll() {
-		Part_Service.ShowAll();
+		Part_Service.showAll();
 	}
 	
 	@Test
@@ -23,7 +23,7 @@ class PartServiceTest {
 	
 	@Test
 	void testUpdate() {
-		Part_Service.Update();
+		Part_Service.update();
 	}
 	
 	@Test

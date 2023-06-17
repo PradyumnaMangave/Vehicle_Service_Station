@@ -1,43 +1,40 @@
 package com.sunbeam.service;
 
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-import com.sunbeam.dao.Customer_DAO;
 import com.sunbeam.dao.Parts_DAO;
-import com.sunbeam.entities.Customer_Entity;
 import com.sunbeam.entities.Part_Entity;
 
 public class Part_Service {
-		
-	public static void ShowAll() {
+	
+	//Retrieves and displays all parts information.
+	public static void showAll() {
 		System.out.println("Showing All parts info::");
 		List<Part_Entity> partList = new ArrayList<>();
 		Parts_DAO partDAO = new Parts_DAO();
 		partDAO.ShowAll(partList);
-		for (Part_Entity part_Entity : partList) {
-			System.out.println(part_Entity);
-		}
+		partList.forEach(System.out::println);
 	}
 	
+	//Displays a specific part based on the given ID.
 	public static void SpeciShow() {
 		System.out.println("Enter Id of Part to display::");
-		int id = new Scanner(System.in).nextInt();
-		
-		boolean part = com.sunbeam.dao.Parts_DAO.SpeciShow(id);
+		int id = getInputId();
+		boolean partExists = com.sunbeam.dao.Parts_DAO.SpeciShow(id);
 	}
 	
+	//Inserts part data into the database.
 	public static void insertToDB() {
 		System.out.println("Enter ID::");
-		int id = new Scanner(System.in).nextInt();
+		int id = getInputId();
 		System.out.println("Enter Part Name::");
-		String name = new Scanner(System.in).next();
+		String name = getInputString();
 		System.out.println("Enter Description::");
-		String description = new Scanner(System.in).nextLine();
+		String description = getInputString();
 		System.out.println("Enter Price::");
-		double price = new Scanner(System.in).nextDouble();
+		double price = getInputDouble();
 
 		Part_Entity parts = new Part_Entity(id,name,description,price);
 
@@ -45,11 +42,12 @@ public class Part_Service {
 		System.out.println("Data Inserted Successfully");
 	}
 	
-	public static void Update() {
+	//Updates the price of a specific part based on the given ID.
+	public static void update() {
 		System.out.println("Enter Id of Part to update::");
-		int id =new Scanner(System.in).nextInt();
+		int id = getInputId();
 		System.out.println("Enter price to update::");
-		double price = new Scanner(System.in).nextDouble();
+		double price = getInputDouble();
 		
 		boolean parts=com.sunbeam.dao.Parts_DAO.Update(id, price);
 		 if (parts) {
@@ -59,9 +57,10 @@ public class Part_Service {
 		    }
 		}
 	
+	//Deletes a part from the database based on the given ID.
 	public static void delete() {
 		System.out.println("Enter ID of part to delete::");
-		int id = new Scanner(System.in).nextInt();
+		int id = getInputId();
 		boolean parts=com.sunbeam.dao.Parts_DAO.delete(id);
 		if (parts) {
 	        System.out.println("Customer Deleted successfully");
@@ -69,4 +68,18 @@ public class Part_Service {
 	        System.out.println("Failed to delete customer");
 	    }
 	}
+	
+	// Helper methods to get user input
+    private static int getInputId() {
+        return new Scanner(System.in).nextInt();
+    }
+
+    private static String getInputString() {
+        return new Scanner(System.in).nextLine();
+    }
+
+    private static double getInputDouble() {
+        return new Scanner(System.in).nextDouble();
+    }
 }
+

@@ -198,7 +198,7 @@ public class Menu {
 				break;
 				
 			case EDIT:
-				com.sunbeam.service.Part_Service.Update();
+				com.sunbeam.service.Part_Service.update();
 				break;
 				
 			case DELETE:
@@ -206,7 +206,7 @@ public class Menu {
 				break;
 				
 			case ALL:
-				com.sunbeam.service.Part_Service.ShowAll();
+				com.sunbeam.service.Part_Service.showAll();
 				break;
 				
 			case SPECI_SHOW:
