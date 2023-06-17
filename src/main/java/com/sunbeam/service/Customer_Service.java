@@ -9,9 +9,9 @@ import com.sunbeam.entities.Customer_Entity;
 
 public class Customer_Service {
 
+	//Inserts customer data into the database.
 	public static void insertToDB() {
-		
-		
+	
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Enter ID::");
 		int id = sc.nextInt();
@@ -29,7 +29,8 @@ public class Customer_Service {
 		System.out.println("Data Inserted Successfully");
 	}
 	
-	public static void Delete() {
+	//Deletes a customer from the database based on the given ID.
+	public static void delete() {
 		System.out.println("Enter Id to delete::");
 		Scanner sc = new Scanner(System.in); 
 		int id = sc.nextInt();
@@ -44,7 +45,8 @@ public class Customer_Service {
 		}
 	}
 	
-	public static void ShowAll() {
+	//Retrieves and displays all customers from the database.
+	public static List<Customer_Entity> showAll() {
 		System.out.println("Showing All customers");
 		List<Customer_Entity> customerList = new ArrayList<>();
 		Customer_DAO custDAO = new Customer_DAO();
@@ -53,10 +55,13 @@ public class Customer_Service {
 			System.out.println(customer_Entity);
 			
 		}
+		//return the list of customers
+		return customerList;
 		
 	}
 	
-	public static void SpeciShow() {
+	//Displays a specific customer based on the given ID.
+	public static void speciShow() {
 	    System.out.println("Enter Specific Customer's ID:");
 	    int id = new Scanner(System.in).nextInt();
 	    
@@ -64,13 +69,15 @@ public class Customer_Service {
 	    
 	}
 	
-	public static Customer_Entity SpeciShow1() {
+	//Displays a specific customer based on the given mobile number.
+	public static Customer_Entity speciShow1() {
 		System.out.println("Enter Customer's Mobile Number::");
 		String mobile =new Scanner(System.in).next();
 		Customer_Entity customer = com.sunbeam.dao.Customer_DAO.SpeciShow(mobile);
 		return customer;
 	}
 	
+	//Updates customer data in the database.
 	public static void update() {
 		System.out.println("Enter ID in which You want to update data::");
 		int id = new Scanner(System.in).nextInt();

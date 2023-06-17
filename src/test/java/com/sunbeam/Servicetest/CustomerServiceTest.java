@@ -13,7 +13,7 @@ class CustomerServiceTest {
 	
 	@Test
 	void testDelete() {
-		Customer_Service.Delete();
+		Customer_Service.delete();
 	}
 	
 	@Test
@@ -23,12 +23,12 @@ class CustomerServiceTest {
 	
 	@Test
 	void testShowAll() {
-		Customer_Service.ShowAll();
+		Customer_Service.showAll();
 	}
 	
 	@Test
 	void testSpeciShow() {
-		Customer_Service.SpeciShow();
+		Customer_Service.speciShow();
 	}
 
 }

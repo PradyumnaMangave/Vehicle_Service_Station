@@ -52,19 +52,19 @@ public class Menu {
 				break;
 				
 			case DELETE:
-				com.sunbeam.service.Customer_Service.Delete();
+				com.sunbeam.service.Customer_Service.delete();
 				break;
 				
 			case ALL:
-				com.sunbeam.service.Customer_Service.ShowAll();
+				com.sunbeam.service.Customer_Service.showAll();
 				break;
 				
 			case SPECI_SHOW:
-				com.sunbeam.service.Customer_Service.SpeciShow();
+				com.sunbeam.service.Customer_Service.speciShow();
 				break;
 				
 			case SPECI_SHOW_MOBILE:
-				System.out.println(com.sunbeam.service.Customer_Service.SpeciShow1()); 
+				System.out.println(com.sunbeam.service.Customer_Service.speciShow1()); 
 				break;
 				
 			default:
@@ -140,7 +140,7 @@ public class Menu {
 		while((choice = MenuOptions.ServiceReqSubMenuCustomer()) != EServiceRequestSubCustomer.EXIT) {
 			switch (choice) {
 			case CHOOSE_CUSTOMER:
-				System.out.println("Choose customer");
+				com.sunbeam.service.Service_req_service.chooseCustomer();
 				break;
 
 			case DISPLAY_HIS_VEHICLES:
