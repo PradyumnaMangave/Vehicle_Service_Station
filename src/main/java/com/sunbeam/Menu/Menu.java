@@ -83,19 +83,19 @@ public class Menu {
 				break;
 				
 			case EDIT:
-				com.sunbeam.service.Vehicle_service.Update();;
+				com.sunbeam.service.Vehicle_service.update();;
 				break;
 				
 			case DELETE:
-				com.sunbeam.service.Vehicle_service.Delete();
+				com.sunbeam.service.Vehicle_service.delete();
 				break;
 				
 			case ALL:
-				com.sunbeam.service.Vehicle_service.ShowAll();
+				com.sunbeam.service.Vehicle_service.showAll();
 				break;
 				
 			case SPECI_SHOW:
-				com.sunbeam.service.Vehicle_service.SpeciCustomer();
+				com.sunbeam.service.Vehicle_service.speciCustomer();
 				break;
 				
 			default:

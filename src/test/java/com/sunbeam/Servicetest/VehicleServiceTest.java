@@ -18,22 +18,22 @@ class VehicleServiceTest {
 
 	@Test
 	void testSpeciShow() {
-		Vehicle_service.SpeciCustomer();
+		Vehicle_service.speciCustomer();
 	}
 	
 	@Test
 	void testUpdateVehicle() {
-		Vehicle_service.Update();
+		Vehicle_service.update();
 	}
 	
 	@Test
 	void testShowAll() {
-		Vehicle_service.ShowAll();
+		Vehicle_service.showAll();
 	}
 	
 	@Test
 	void testDelete() {
-		Vehicle_service.Delete();
+		Vehicle_service.delete();
 	}
 	
 }
