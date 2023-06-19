@@ -110,8 +110,7 @@ public class Menu {
 		while((choice = MenuOptions.ServiceRequestOptions()) != EServiceRequestMenu.EXIT) {
 			switch (choice) {
 			case SELECT_CUSTOMER:
-				System.out.println("Select from below options::");
-				Service_Req_Customer_SubMenu();
+				com.sunbeam.service.Service_req_service.chooseCustomer();
 				
 				break;
 				
@@ -130,29 +129,6 @@ public class Menu {
 				
 			default:
 				System.out.println("Wrong Choice Selected..");
-				break;
-			}
-		}
-	}
-	
-	private static void Service_Req_Customer_SubMenu() {
-		EServiceRequestSubCustomer choice;
-		while((choice = MenuOptions.ServiceReqSubMenuCustomer()) != EServiceRequestSubCustomer.EXIT) {
-			switch (choice) {
-			case CHOOSE_CUSTOMER:
-				com.sunbeam.service.Service_req_service.chooseCustomer();
-				break;
-
-			case DISPLAY_HIS_VEHICLES:
-				System.out.println("Display vehicle data");
-				break;
-
-			case CHOOSE_VEHICLE:
-				System.out.println("Choose vehicle");
-				break;
-
-			default:
-				System.out.println("Wrong Choice Selected");
 				break;
 			}
 		}
