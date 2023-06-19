@@ -34,12 +34,15 @@
 					 if(choice == 0) {
 						 Vehicle_service.vehicle_add();
 					 }
-					 else {
+					 else if(choice==1){
 						 System.out.println("Choose Vehicle ID::");
 						 int vehicle_id = new Scanner(System.in).nextInt();
 						 vehicleDAO.EnterIntoVehicle(vehicle_number,customer.getId(),vehicle_id);
 						 System.out.println("Vehicle added into Database....");
 					 }	 
+					 else {
+						 System.out.println("Choose Correct Option...");
+					 }
 				
 				 } catch (Exception e) {
 					 e.printStackTrace();
@@ -71,13 +74,15 @@
 		// Get specific customer details and their vehicles
 		public static void speciCustomer() {
 			Customer_Entity customer = Customer_Service.speciShow1();
-			System.out.println("Customer ID for mobile number "+ customer.getMobile() + " is " + customer.getId() + " And Customer Name is " + customer.getName() +"...");
+			
 		    vehicleDAO.speciCustomer(vehicleList,customer);
-		    
+		    if(vehicleList!=null)
 		    for (NewVehicleEntity newVehicleEntity : vehicleList) {
 				System.out.println(newVehicleEntity);
 			}
-		    
+		    else {
+		    	Customer_Service.insertToDB();
+		    }
 		}
 		
 		//Show details of all vehicles
