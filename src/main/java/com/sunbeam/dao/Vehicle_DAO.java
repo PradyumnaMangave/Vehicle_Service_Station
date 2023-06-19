@@ -67,7 +67,8 @@ public class Vehicle_DAO {
 			}
 	}
 
-	public void speciCustomer(List<NewVehicleEntity> vehicleList,Customer_Entity cust) {
+	public List<NewVehicleEntity> speciCustomer(List<NewVehicleEntity> vehicleList,Customer_Entity cust) {
+		
 		try {
 			Connection con = DatabaseConnectivity.create();
 			String SQL = "SELECT c.name ,v.company, v.model, cv.vehicle_number FROM vehicle v INNER JOIN customer_vehicle cv ON v.id = cv.vehicle_id INNER JOIN customer c ON c.id=cv.customer_id WHERE cv.customer_id = ?";
@@ -82,6 +83,8 @@ public class Vehicle_DAO {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		return vehicleList;
+		
 	}
 	
 	public void ShowAll(List<NewVehicleEntity> vehicleList,Customer_Entity cust) {
