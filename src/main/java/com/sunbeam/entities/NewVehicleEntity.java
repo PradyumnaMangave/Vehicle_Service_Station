@@ -40,7 +40,7 @@ public class NewVehicleEntity {
 	}
 	@Override
 	public String toString() {
-		return "NewVehicleEntity [ "+"Customer Name: "+this.name+" , "+" Vehicle Number = " + vehicle_number + ", Company = " + company + ", Model = " + model + "]";
+		return "VehicleInfo [ "+"Customer Name: "+this.name+" , "+" Vehicle Number = " + vehicle_number + ", Company = " + company + ", Model = " + model + "]";
 	}
 	
 	
