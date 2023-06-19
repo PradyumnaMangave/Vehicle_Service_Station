@@ -61,11 +61,14 @@ public class Customer_Service {
 	}
 	
 	//Displays a specific customer based on the given ID.
-	public static void speciShow() {
+	public static Customer_Entity speciShow() {
 	    System.out.println("Enter Specific Customer's ID:");
-	    int id = new Scanner(System.in).nextInt();
+	    int selectedCustomerId = new Scanner(System.in).nextInt();
 	    
-	    boolean customer = com.sunbeam.dao.Customer_DAO.SpeciShow(id);
+	    Customer_Entity customer = com.sunbeam.dao.Customer_DAO.getCustomerById(selectedCustomerId);
+	    if(customer == null)
+	    com.sunbeam.service.Customer_Service.insertToDB();
+		return customer;
 	    
 	}
 	

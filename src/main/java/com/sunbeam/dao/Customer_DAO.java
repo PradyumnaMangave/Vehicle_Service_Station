@@ -72,27 +72,28 @@ public class Customer_DAO {
 		
 	}
 
-	public static boolean SpeciShow(int id) {
-		boolean f = false;
+	public static Customer_Entity getCustomerById(int selectedCustomerId) {
+		Customer_Entity customer = null;
 		try {
 			Connection con = DatabaseConnectivity.create();
 			String SQL = "SELECT * FROM customer WHERE id = ?";
 			PreparedStatement pst = con.prepareStatement(SQL);
-			pst.setInt(1, id);
+			pst.setInt(1, selectedCustomerId);
 				
 			ResultSet rs = pst.executeQuery();
 			if(rs.next()) {
-				Customer_Entity customer = new Customer_Entity ( rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5));
+				customer = new Customer_Entity ( rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5));
 				System.out.println(customer);
 				}
 			else {
 				System.out.println("Customer Not Found....Check ID again..");
+				System.out.println("Enter New Customer");
 			}
 			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return f;
+		return customer;
 	    
 	   
 	}
