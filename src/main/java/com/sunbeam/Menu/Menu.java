@@ -1,5 +1,8 @@
 package com.sunbeam.Menu;
 
+import com.sunbeam.entities.ServiceRequestEntity;
+import com.sunbeam.service.Service_req_service;
+
 public class Menu {
 	
 	public static void mainMenu(){
@@ -107,16 +110,23 @@ public class Menu {
 	
 	private static void service_request() {
 		EServiceRequestMenu choice;
+		String vehicleNumber = null;
 		while((choice = MenuOptions.ServiceRequestOptions()) != EServiceRequestMenu.EXIT) {
 			switch (choice) {
 			case SELECT_CUSTOMER:
-				com.sunbeam.service.Service_req_service.chooseCustomer();
+				
+				vehicleNumber = com.sunbeam.service.Service_req_service.chooseCustomer();
 				
 				break;
 				
 			case PROCESS_REQUEST:
+				if (vehicleNumber != null) {
 				System.out.println("Select from process request submenu");
-				Service_Req_Sub_Process_Request();
+				Service_Req_Sub_Process_Request(vehicleNumber);
+				}
+				else {
+					System.out.println("Select Vehicle First...");
+				}
 				break;
 				
 			case DISPLAY_BILL:
@@ -134,12 +144,15 @@ public class Menu {
 		}
 	}
 	
-	private static void Service_Req_Sub_Process_Request() {
+	private static void Service_Req_Sub_Process_Request(String vehicleNumber) {
 		EServiceRequestSubProcess choice;
 		while((choice = MenuOptions.ServiceReqSubMenuProcessReq()) != EServiceRequestSubProcess.EXIT) {
+			ServiceRequestEntity ServiceRequest = null;
 			switch (choice) {
 			case NEW_SERVICE:
-				System.out.println("New Service");
+				
+				ServiceRequest = Service_req_service.createNewService(vehicleNumber);
+
 				break;
 
 			case EXISTING_SERVICE:
