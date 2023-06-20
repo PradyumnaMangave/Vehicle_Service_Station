@@ -8,13 +8,13 @@ import com.sunbeam.dao.ServiceReqDAO;
 import com.sunbeam.dao.Vehicle_DAO;
 import com.sunbeam.entities.Customer_Entity;
 import com.sunbeam.entities.NewVehicleEntity;
+import com.sunbeam.entities.ServiceRequestEntity;
 	
 public class Service_req_service {
 	
 	private static Vehicle_DAO vehicle_DAO = new Vehicle_DAO();
-    static List<NewVehicleEntity> vehicleList = new ArrayList<NewVehicleEntity>();
 	
-	public static void chooseCustomer(){
+	public static String chooseCustomer(){
 		//imported show all method of customer to show all customers
 		List<Customer_Entity> customerList = Customer_Service.showAll();
 		
@@ -24,6 +24,7 @@ public class Service_req_service {
 		
 		if(customer != null) {
 		//DAO method to get specific customers vehicle list
+		List<NewVehicleEntity> vehicleList = new ArrayList<NewVehicleEntity>();
 		ServiceReqDAO.getVehicleByID(vehicleList, customer);
 		
 			if(vehicleList.size()!=0) {
@@ -35,7 +36,7 @@ public class Service_req_service {
 				System.out.println("Enter ID to choose Vehicle::");
 				int i = new Scanner(System.in).nextInt();
 				//For choosing vehicle from vehicle list
-				System.out.println(vehicleList.get(i-1).getVehicle_number());
+				return vehicleList.get(i-1).getVehicle_number();
 			}
 		}
 		else {
@@ -43,6 +44,24 @@ public class Service_req_service {
 			System.out.println("Enter New Customer...");
 			com.sunbeam.service.Customer_Service.insertToDB();
 		}
+		return null;
 	}
+
+	public static ServiceRequestEntity createNewService(String vehicleNumber) {
+		
+		try {
+			ServiceReqDAO serviceReq =new ServiceReqDAO(); 
+			return serviceReq.addIntoServices(vehicleNumber);
+			
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		System.out.println("New Service Created...");
+		return null;
+		
+	}
+
+	
 
 }
