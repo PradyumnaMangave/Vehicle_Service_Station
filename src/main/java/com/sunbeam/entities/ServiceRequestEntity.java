@@ -14,6 +14,12 @@ public class ServiceRequestEntity {
 	{
 		this.serviceList = new ArrayList<ServiceEntity>();
 	}
+	
+	public ServiceRequestEntity(int id, String vehicleNumber) {
+		super();
+		this.id = id;
+		this.vehicleNumber = vehicleNumber;
+	}
 	public int getId() {
 		return id;
 	}
