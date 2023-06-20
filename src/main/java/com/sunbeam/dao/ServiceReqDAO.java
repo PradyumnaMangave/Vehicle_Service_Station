@@ -3,10 +3,12 @@ package com.sunbeam.dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.Statement;
 import java.util.List;
 
 import com.sunbeam.entities.Customer_Entity;
 import com.sunbeam.entities.NewVehicleEntity;
+import com.sunbeam.entities.ServiceRequestEntity;
 import com.sunbeam.util.DatabaseConnectivity;
 
 public class ServiceReqDAO {
@@ -26,6 +28,24 @@ public class ServiceReqDAO {
 			e.printStackTrace();
 		}
 		
+	}
+
+	public ServiceRequestEntity addIntoServices(String vehicleNumber) {
+		try {
+			Connection con = DatabaseConnectivity.create();
+			String SQL = "Insert into service_requests (vehicle_number) values (?)";
+			PreparedStatement pst = con.prepareStatement(SQL,Statement.RETURN_GENERATED_KEYS);
+			pst.setString(1, vehicleNumber);
+			pst.executeUpdate();
+			ResultSet rs = pst.getGeneratedKeys();
+			if(rs.next()) {
+				return new ServiceRequestEntity(rs.getInt(1),vehicleNumber);
+				
+			}	
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
 	}
 }
 
