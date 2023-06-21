@@ -1,13 +1,17 @@
 package com.sunbeam.dao;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 import com.sunbeam.entities.Customer_Entity;
 import com.sunbeam.entities.NewVehicleEntity;
+import com.sunbeam.entities.Service;
 import com.sunbeam.entities.ServiceRequestEntity;
 import com.sunbeam.util.DatabaseConnectivity;
 
@@ -47,6 +51,60 @@ public class ServiceReqDAO {
 		}
 		return null;
 	}
+
+	public List<ServiceRequestEntity> getAllServiceRequests()  {
+	    List<ServiceRequestEntity> serviceRequests = new ArrayList<>();
+	    
+	    try {
+	        Connection con = DatabaseConnectivity.create();
+	        String SQL = "SELECT * FROM service_requests";
+	        PreparedStatement pst = con.prepareStatement(SQL);
+	        ResultSet rs = pst.executeQuery();
+	        
+	        while (rs.next()) {
+	            int id = rs.getInt("id");
+	            String vehicleNumber = rs.getString("vehicle_number");
+	            Date requestDate = rs.getDate("request_date");
+	            
+	            ServiceRequestEntity serviceRequest = new ServiceRequestEntity(id, vehicleNumber,requestDate, rs.getDouble("bill_amount"));
+	            serviceRequests.add(serviceRequest);
+	        }
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	    }
+	    
+	    return serviceRequests;
+	}
+
+	public List<ServiceRequestEntity> getSpecificDayServiceRequests(String inputDate) {
+		List<ServiceRequestEntity> serviceRequests = new ArrayList<>();
+	    
+	    try {
+	        Connection con = DatabaseConnectivity.create();
+	        String SQL = "SELECT * FROM service_requests where Date(request_date)=?";
+	        PreparedStatement pst = con.prepareStatement(SQL);
+	        ServiceRequestEntity serv = new ServiceRequestEntity();
+	        pst.setString(1, inputDate);
+	        ResultSet rs = pst.executeQuery();
+	        
+	        while (rs.next()) {
+	            int id = rs.getInt("id");
+	            String vehicleNumber = rs.getString("vehicle_number");
+	            Date requestDate = rs.getDate("request_date");
+	            
+	            ServiceRequestEntity serviceRequest = new ServiceRequestEntity(id, vehicleNumber,requestDate, rs.getDouble("bill_amount"));
+	            serviceRequests.add(serviceRequest);
+	        }
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	    }
+	    
+	    return serviceRequests;
+	}
+
+	
 }
+
+
 
 
