@@ -1,5 +1,6 @@
 package com.sunbeam.Menu;
 
+import com.sunbeam.dao.ServiceReqDAO;
 import com.sunbeam.entities.ServiceRequestEntity;
 import com.sunbeam.service.Service_req_service;
 
@@ -120,13 +121,11 @@ public class Menu {
 				break;
 				
 			case PROCESS_REQUEST:
-				if (vehicleNumber != null) {
+			
 				System.out.println("Select from process request submenu");
 				Service_Req_Sub_Process_Request(vehicleNumber);
-				}
-				else {
-					System.out.println("Select Vehicle First...");
-				}
+				
+				
 				break;
 				
 			case DISPLAY_BILL:
@@ -148,19 +147,35 @@ public class Menu {
 		EServiceRequestSubProcess choice;
 		while((choice = MenuOptions.ServiceReqSubMenuProcessReq()) != EServiceRequestSubProcess.EXIT) {
 			ServiceRequestEntity ServiceRequest = null;
+			ServiceRequestEntity serviceRequest = new ServiceRequestEntity();
 			switch (choice) {
 			case NEW_SERVICE:
 				
 				ServiceRequest = Service_req_service.createNewService(vehicleNumber);
+				if(ServiceRequest!=null) {
+					System.out.println("New Service Created..");
+				}
 
 				break;
 
 			case EXISTING_SERVICE:
-				System.out.println("existing service");
+				 
+			     serviceRequest = Service_req_service.existingService(0);
+			     if(serviceRequest!=null) {
+			    	 System.out.println("id selected");
+			    	
+			     }
+			     else {
+			    	 System.out.println("Select Id First");
+			     }
+				
+			
 				break;
 
 			case MAINTAINANCE:
+				if(serviceRequest!=null) {
 				System.out.println("maintainence");
+				}
 				break;
 
 			case REPAIRING:
