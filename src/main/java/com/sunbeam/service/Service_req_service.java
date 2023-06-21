@@ -1,5 +1,7 @@
 package com.sunbeam.service;
 
+import java.sql.Date;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -8,11 +10,13 @@ import com.sunbeam.dao.ServiceReqDAO;
 import com.sunbeam.dao.Vehicle_DAO;
 import com.sunbeam.entities.Customer_Entity;
 import com.sunbeam.entities.NewVehicleEntity;
+import com.sunbeam.entities.Service;
 import com.sunbeam.entities.ServiceRequestEntity;
 	
 public class Service_req_service {
 	
 	private static Vehicle_DAO vehicle_DAO = new Vehicle_DAO();
+	private static ServiceReqDAO serviceReq =new ServiceReqDAO(); 
 	
 	public static String chooseCustomer(){
 		//imported show all method of customer to show all customers
@@ -48,20 +52,50 @@ public class Service_req_service {
 	}
 
 	public static ServiceRequestEntity createNewService(String vehicleNumber) {
-		
-		try {
-			ServiceReqDAO serviceReq =new ServiceReqDAO(); 
-			return serviceReq.addIntoServices(vehicleNumber);
 			
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		System.out.println("New Service Created...");
+			return serviceReq.addIntoServices(vehicleNumber);
+				
+	}
+
+	public static ServiceRequestEntity existingService(int selectedId) {
+		System.out.println("List of all service request");
+		 List<ServiceRequestEntity> serviceList = serviceReq.getAllServiceRequests();
+		 
+		  for (ServiceRequestEntity serviceRequest : serviceList) {
+		        System.out.println(serviceRequest);
+		    }
+		  
+		    SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+	        Scanner scanner = new Scanner(System.in);
+	        System.out.println("Enter Date to show Specific Days Dervice Requests::");
+	        System.out.print("Enter a date (yyyy-MM-dd): ");
+	        String inputDate = scanner.nextLine();
+		    List<ServiceRequestEntity> serviceList1 = serviceReq.getSpecificDayServiceRequests(inputDate);
+		 
+		  for (ServiceRequestEntity serviceRequest : serviceList1) {
+		        System.out.println(serviceRequest);
+		    }
+		  
+		 
+		  Scanner sc = new Scanner(System.in);
+		  System.out.print("Enter the ID of the existing service request: ");
+		  selectedId = sc.nextInt();
+		  ServiceRequestEntity selectedServiceRequest = null;
+		  for (ServiceRequestEntity serviceRequest : serviceList1) {
+			  if (serviceRequest.getId() == selectedId) {
+				 selectedServiceRequest = serviceRequest;
+				 return selectedServiceRequest;
+				 }
+			  }
 		return null;
-		
+		}
 	}
 
 	
+	
 
-}
+	
+
+	
+
+
