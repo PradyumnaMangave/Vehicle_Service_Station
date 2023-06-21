@@ -1,5 +1,6 @@
 package com.sunbeam.entities;
 
+import java.sql.Date;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -7,18 +8,20 @@ import java.util.List;
 public class ServiceRequestEntity {
 	private int id;
 	private String vehicleNumber;
-	private LocalDate reqDate;
+	private Date reqDate;
 	private double billAmount;
-	private List<ServiceEntity> serviceList;
+	private List<Service> serviceList;
 	
 	{
-		this.serviceList = new ArrayList<ServiceEntity>();
+		this.serviceList = new ArrayList<Service>();
 	}
 	
-	public ServiceRequestEntity(int id, String vehicleNumber) {
+	public ServiceRequestEntity(int id, String vehicleNumber, Date requestDate, double billAmount) {
 		super();
 		this.id = id;
 		this.vehicleNumber = vehicleNumber;
+		this.reqDate = requestDate;
+		this.billAmount=billAmount;
 	}
 	public int getId() {
 		return id;
@@ -32,10 +35,10 @@ public class ServiceRequestEntity {
 	public void setVehicleNumber(String vehicleNumber) {
 		this.vehicleNumber = vehicleNumber;
 	}
-	public LocalDate getReqDate() {
+	public Date getReqDate() {
 		return reqDate;
 	}
-	public void setReqDate(LocalDate reqDate) {
+	public void setReqDate(Date reqDate) {
 		this.reqDate = reqDate;
 	}
 	public double getBillAmount() {
@@ -44,14 +47,14 @@ public class ServiceRequestEntity {
 	public void setBillAmount(double billAmount) {
 		this.billAmount = billAmount;
 	}
-	public List<ServiceEntity> getServiceList() {
+	public List<Service> getServiceList() {
 		return serviceList;
 	}
-	public void setServiceList(List<ServiceEntity> serviceList) {
+	public void setServiceList(List<Service> serviceList) {
 		this.serviceList = serviceList;
 	}
-	public ServiceRequestEntity(int id, String vehicleNumber, LocalDate reqDate, double billAmount,
-			List<ServiceEntity> serviceList) {
+	public ServiceRequestEntity(int id, String vehicleNumber,Date reqDate, double billAmount,
+			List<Service> serviceList) {
 		super();
 		this.id = id;
 		this.vehicleNumber = vehicleNumber;
@@ -59,10 +62,17 @@ public class ServiceRequestEntity {
 		this.billAmount = billAmount;
 		this.serviceList = serviceList;
 	}
+	public ServiceRequestEntity(int id, String vehicleNumber) {
+		this.id = id;
+		this.vehicleNumber = vehicleNumber;
+	}
+	public ServiceRequestEntity() {
+		this.reqDate = reqDate;
+	}
 	@Override
 	public String toString() {
 		return "ServiceRequestEntity [id=" + id + ", vehicleNumber=" + vehicleNumber + ", reqDate=" + reqDate
-				+ ", billAmount=" + billAmount + ", serviceList=" + serviceList + "]";
+				+ ", billAmount=" + billAmount + "]";
 	}
 	
 }
