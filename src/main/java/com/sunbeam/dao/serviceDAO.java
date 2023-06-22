@@ -32,7 +32,7 @@ public class serviceDAO {
 					serviceReq.getServiceList().add(maintain);
 					}
 				else if(rs.getString(2).equals("oil")){
-					oil oil = new oil(0);
+					oil oil = new oil();
 					oil.setId(rs.getInt(1));
 					oil.setOil_cost(rs.getDouble(3));
 					oil.setTotal_cost(rs.getDouble(5));
@@ -74,5 +74,31 @@ public class serviceDAO {
 		
 	}
 
+	public static void createNewOilChange(ServiceRequestEntity serviceRequest, oil service) {
+		try {
+			Connection con = DatabaseConnectivity.create();
+			String SQL = "INSERT INTO services (service_request_id,remark,type,oil_cost, labour_charges, total_cost ) VALUES (?,?,?,?,?,?)";
+			PreparedStatement pst = con.prepareStatement(SQL);
+			if(service instanceof oil)
+			{ 
+			pst.setInt(1, serviceRequest.getId());
+	        pst.setString(2, service.getRemark());
+	        pst.setString(3,"oil");
+	        pst.setDouble(4, service.getOil_cost());
+	        pst.setDouble(5, 0);
+	        pst.setDouble(6, service.getTotal_cost());
+	        
+	        int rs = pst.executeUpdate();
+			}
+			
+				}
+		catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+	}
+		
+	}
 
-}
+
+
