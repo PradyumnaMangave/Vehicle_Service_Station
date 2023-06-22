@@ -2,8 +2,9 @@ package com.sunbeam.entities;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
-public abstract class maintainance extends Service{
+public  class maintainance extends Service{
 
 	private double labourCharges;
 	private double parts_cost;
@@ -48,7 +49,31 @@ public abstract class maintainance extends Service{
 
 	@Override
 	public String toString() {
-		return "maintainance [labourCharges=" + labourCharges + ", parts_cost=" + parts_cost + "]";
+		return super.toString()+"maintainance [ labourCharges=" + labourCharges + ", parts_cost=" + parts_cost + "]";
+	}
+
+
+	@Override
+	public void acceptService() {
+	    Scanner scanner = new Scanner(System.in);
+	    
+	    System.out.println("Enter remark: ");
+	    String remark = scanner.nextLine();
+	    setRemark(remark);
+	    
+	    System.out.println("Enter labour charge: ");
+	    double labourCharge = scanner.nextDouble();
+	    setLabourCharges(labourCharge);
+	    
+	}
+
+
+
+	@Override
+	public void calculateTotalCost() {
+		 double totalCost = getLabourCharges() + getParts_cost();
+		 setTotal_cost(totalCost);
+		
 	}
 	
 	
