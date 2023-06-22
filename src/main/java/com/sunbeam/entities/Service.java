@@ -6,10 +6,14 @@ public abstract class Service {
 	protected double total_cost;
 	protected String remark;
 	
-	public Service(String type) {
+	public Service(int id2, String string, String type2, double labourCharge, double labourCharge2, double totalCost) {
 		this.type = type;
 	}
 	
+	public Service(String string) {
+		this.type = type;
+	}
+
 	public int getId() {
 		return id;
 	}
@@ -37,7 +41,17 @@ public abstract class Service {
 	}
 	
 	
+	@Override
+	public String toString() {
+		return "Service [id=" + id + ", type=" + type + ", total_cost=" + total_cost + ", remark=" + remark + "]";
+	}
+
 	public abstract void acceptService();
 	
  	public abstract void calculateTotalCost();
+
+	public void add(Service service) {
+		// TODO Auto-generated method stub
+		
+	}
 }
