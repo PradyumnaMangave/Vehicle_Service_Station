@@ -26,6 +26,7 @@ public class Service_service {
 			service = new maintainance();
 			serviceList.add(service);
 			service.acceptService();
+			service.calculateTotalCost();
 			serviceDAO.createNewMaintainance(serviceRequest, service);
 		}
 		else {
@@ -39,6 +40,7 @@ public class Service_service {
 				service = new maintainance();
 				serviceList.add(service);
 				service.acceptService();
+				service.calculateTotalCost();
 				serviceDAO.createNewMaintainance(serviceRequest, service);
 			}
 		
