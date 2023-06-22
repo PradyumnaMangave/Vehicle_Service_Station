@@ -8,6 +8,7 @@ import com.sunbeam.dao.serviceDAO;
 import com.sunbeam.entities.Service;
 import com.sunbeam.entities.ServiceRequestEntity;
 import com.sunbeam.entities.maintainance;
+import com.sunbeam.entities.oil;
 
 public class Service_service {
 
@@ -42,6 +43,36 @@ public class Service_service {
 				service.acceptService();
 				service.calculateTotalCost();
 				serviceDAO.createNewMaintainance(serviceRequest, service);
+			}
+		
+	}
+		
+	}
+
+	public static void doOilChange(ServiceRequestEntity serviceRequest) {
+		List<Service> serviceList = serviceRequest.getServiceList();
+		oil service = null;
+		boolean serviceFound = false;
+		if(serviceList.isEmpty()) {
+			service = new oil();
+			serviceList.add(service);
+			service.acceptService();
+			service.calculateTotalCost();
+			serviceDAO.createNewOilChange(serviceRequest, service);
+		}
+		else {
+			for(Service S : serviceList) {
+				if(S instanceof oil) {
+						service = (oil) S;
+				serviceFound = true;
+			}
+		}
+			if(!serviceFound) {
+				service = new oil();
+				serviceList.add(service);
+				service.acceptService();
+				service.calculateTotalCost();
+				serviceDAO.createNewOilChange(serviceRequest, service);
 			}
 		
 	}
