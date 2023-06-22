@@ -71,9 +71,15 @@ public class Service_service {
 				if(S instanceof oil) {
 						service = (oil) S;
 				serviceFound = true;
+				break;
 			}
 		}
-			if(!serviceFound) {
+			if(serviceFound){
+				service.acceptService();
+	            service.calculateTotalCost();
+	            serviceDAO.updateOilChange(serviceRequest, service);
+			}
+			else {
 				service = new oil();
 				serviceList.add(service);
 				service.acceptService();
