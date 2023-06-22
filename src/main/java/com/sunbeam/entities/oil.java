@@ -14,7 +14,7 @@ public class oil extends Service{
 		this.oil_cost = oil_cost;
 	}
 
-	public oil(double oil_cost) {
+	public oil() {
 		super("oil");
 		this.oil_cost = 0;
 	}
