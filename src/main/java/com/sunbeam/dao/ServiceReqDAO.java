@@ -5,13 +5,11 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
 import com.sunbeam.entities.Customer_Entity;
 import com.sunbeam.entities.NewVehicleEntity;
-import com.sunbeam.entities.Service;
 import com.sunbeam.entities.ServiceRequestEntity;
 import com.sunbeam.util.DatabaseConnectivity;
 
@@ -102,7 +100,7 @@ public class ServiceReqDAO {
 	    return serviceRequests;
 	}
 
-	
+		
 }
 
 
