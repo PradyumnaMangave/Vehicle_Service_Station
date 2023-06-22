@@ -190,8 +190,15 @@ public class Menu {
 				break;
 
 			case OIL_ADDITIVE_CHANGE:
-				System.out.println("Oil/additive change if any");
+
+				if (serviceRequest != null) {
+					   Service_service.doOilChange(serviceRequest);
+				}else {
+					System.out.println("Failed to go in Oil change...choose service first");
+				}
+
 				break;
+			
 
 			default:
 				System.out.println("Wrong Choice selected");
