@@ -118,6 +118,27 @@ public class serviceDAO {
 	    }
 	}
 
+	public static void updateOilChange(ServiceRequestEntity serviceRequest, oil service) {
+		try {
+	        Connection con = DatabaseConnectivity.create();
+	        String SQL = "UPDATE services SET remark = CONCAT(?, ',\n', remark), oil_cost = oil_cost + ?, total_cost = total_cost + ? WHERE id = ?";
+	        PreparedStatement pst = con.prepareStatement(SQL);
+	        pst.setString(1, service.getRemark());
+	        pst.setDouble(2, service.getOil_cost());
+	        pst.setDouble(3, service.getTotal_cost());
+	        pst.setInt(4, service.getId());
+	        int rowsUpdated = pst.executeUpdate();
+	        if (rowsUpdated > 0) {
+	            System.out.println("Maintenance service updated successfully.");
+	        } else {
+	            System.out.println("Failed to update maintenance service.");
+	        }
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	    }
+		
+	}
+
 		
 	}
 
