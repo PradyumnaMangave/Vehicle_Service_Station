@@ -35,9 +35,15 @@ public class Service_service {
 				if(S instanceof maintainance) {
 						service = (maintainance) S;
 				serviceFound = true;
+				break;
 			}
 		}
-			if(!serviceFound) {
+			if(serviceFound) {
+				service.acceptService();
+	            service.calculateTotalCost();
+	            serviceDAO.updateMaintainance(serviceRequest, service);
+			}
+			else {
 				service = new maintainance();
 				serviceList.add(service);
 				service.acceptService();
