@@ -1,5 +1,7 @@
 	package com.sunbeam.entities;
 
+import java.util.Scanner;
+
 public class oil extends Service{
 
 	private double oil_cost;
@@ -25,14 +27,22 @@ public class oil extends Service{
 
 	@Override
 	public void acceptService() {
-		// TODO Auto-generated method stub
-		
+		Scanner scanner = new Scanner(System.in);
+	    
+	    System.out.println("Enter remark: ");
+	    String remark = scanner.nextLine();
+	    setRemark(remark);
+	    
+	    System.out.println("Enter Oil Cost");
+	    double oilCost = scanner.nextDouble();
+	    setOil_cost(oilCost);
+	    	
 	}
 
 	@Override
 	public void calculateTotalCost() {
-		// TODO Auto-generated method stub
-		
+		double totalCost = getOil_cost() ;
+		 setTotal_cost(totalCost);	
 	}
 	
 	
