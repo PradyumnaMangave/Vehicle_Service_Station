@@ -8,5 +8,10 @@ class ServiceRequestServTest {
 	void testChooseCust() {
 		com.sunbeam.service.Service_req_service.chooseCustomer();
 	}
+	
+	@Test
+	void testNewCustomer() {
+		com.sunbeam.service.Service_req_service.createNewService(null);
+	}
 
 }
