@@ -13,5 +13,9 @@ class ServiceRequestServTest {
 	void testNewCustomer() {
 		com.sunbeam.service.Service_req_service.createNewService(null);
 	}
-
+	
+	@Test
+	void testExistingCustomer() {
+		com.sunbeam.service.Service_req_service.existingService(0);
+	}
 }
