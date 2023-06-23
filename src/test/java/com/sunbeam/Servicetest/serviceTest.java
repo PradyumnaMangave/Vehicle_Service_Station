@@ -29,5 +29,12 @@ class serviceTest {
 		Service_service.doOilChange(serviceRequestEntity);
 		System.out.println("tested");
 	}
+	
+	@Test
+	public void testDoRepairing() {
+		ServiceRequestEntity serviceRequestEntity = new ServiceRequestEntity();
+		Service_service.doRepairing(serviceRequestEntity);
+		System.out.println("running");
+	}
 
 }
