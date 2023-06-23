@@ -101,7 +101,7 @@ public class serviceDAO {
 	public static void updateMaintainance(ServiceRequestEntity serviceRequest, Service service) {
 	    try {
 	        Connection con = DatabaseConnectivity.create();
-	        String SQL = "UPDATE services SET remark = CONCAT(?, ',\n', remark), labour_charges = labour_charges + ?, total_cost = total_cost + ? WHERE id = ?";
+	        String SQL = "UPDATE services SET remark = CONCAT(?, ' , ', remark), labour_charges = labour_charges + ?, total_cost = total_cost + ? WHERE id = ?";
 	        PreparedStatement pst = con.prepareStatement(SQL);
 	        pst.setString(1, service.getRemark());
 	        pst.setDouble(2, ((maintainance) service).getLabourCharges());
@@ -121,7 +121,7 @@ public class serviceDAO {
 	public static void updateOilChange(ServiceRequestEntity serviceRequest, oil service) {
 		try {
 	        Connection con = DatabaseConnectivity.create();
-	        String SQL = "UPDATE services SET remark = CONCAT(?, ',\n', remark), oil_cost = oil_cost + ?, total_cost = total_cost + ? WHERE id = ?";
+	        String SQL = "UPDATE services SET remark = CONCAT(?, ' , ', remark), oil_cost = oil_cost + ?, total_cost = total_cost + ? WHERE id = ?";
 	        PreparedStatement pst = con.prepareStatement(SQL);
 	        pst.setString(1, service.getRemark());
 	        pst.setDouble(2, service.getOil_cost());
