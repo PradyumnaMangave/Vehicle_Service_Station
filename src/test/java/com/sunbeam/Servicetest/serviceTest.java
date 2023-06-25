@@ -1,10 +1,9 @@
 package com.sunbeam.Servicetest;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 import org.junit.jupiter.api.Test;
 
 import com.sunbeam.entities.ServiceRequestEntity;
+import com.sunbeam.service.Part_Service;
 import com.sunbeam.service.Service_service;
 
 class serviceTest {
@@ -34,6 +33,7 @@ class serviceTest {
 	public void testDoRepairing() {
 		ServiceRequestEntity serviceRequestEntity = new ServiceRequestEntity();
 		Service_service.doRepairing(serviceRequestEntity);
+		
 		System.out.println("running");
 	}
 
