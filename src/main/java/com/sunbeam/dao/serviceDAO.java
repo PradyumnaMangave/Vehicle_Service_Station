@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.List;
 
+import com.sunbeam.entities.Part_Entity;
 import com.sunbeam.entities.Service;
 import com.sunbeam.entities.ServiceRequestEntity;
 import com.sunbeam.entities.maintainance;
@@ -64,7 +65,7 @@ public class serviceDAO {
 	        pst.setDouble(5, ((maintainance)service).getLabourCharges());
 	        pst.setDouble(6, service.getTotal_cost());
 	        
-	        int rs = pst.executeUpdate();
+	        pst.executeUpdate();
 			}
 			
 				}
@@ -117,6 +118,27 @@ public class serviceDAO {
 	        e.printStackTrace();
 	    }
 	}
+	
+	public static void updateMainRepair(ServiceRequestEntity serviceRequest, Service service, Part_Entity parts, int QID) {
+	    try {
+	        Connection con = DatabaseConnectivity.create();
+	        String SQL = "UPDATE services SET remark = CONCAT(?, ' , ', remark), labour_charges = labour_charges + ? , total_cost = total_cost + ? * ?  WHERE id = ?";
+	        PreparedStatement pst = con.prepareStatement(SQL);
+	        pst.setString(1, service.getRemark());
+	        pst.setDouble(2,  ((maintainance) service).getLabourCharges());
+	        pst.setDouble(3, parts.getPrice());
+	        pst.setDouble(4, QID);
+	        pst.setInt(5, service.getId());
+	        int rowsUpdated = pst.executeUpdate();
+	        if (rowsUpdated > 0) {
+	            System.out.println("Maintenance service updated successfully.");
+	        } else {
+	            System.out.println("Failed to update maintenance service.");
+	        }
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	    }
+	}
 
 	public static void updateOilChange(ServiceRequestEntity serviceRequest, oil service) {
 		try {
@@ -136,6 +158,24 @@ public class serviceDAO {
 	    } catch (Exception e) {
 	        e.printStackTrace();
 	    }
+		
+	}
+
+	public static void insertMainRepair(int SID, int PID, int QID) {
+		
+		try {
+			Connection con = DatabaseConnectivity.create();
+			String SQL = "insert into service_parts (service_id,part_id,quantity) values (?,?,?)";
+			PreparedStatement pst = con.prepareStatement(SQL);
+			pst.setInt(1, SID);
+			pst.setInt(2, PID);
+			pst.setInt(3, QID);
+			pst.executeUpdate();
+			
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		
 	}
 
