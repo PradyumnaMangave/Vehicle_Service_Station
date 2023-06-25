@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Scanner;
 
 import com.sunbeam.dao.serviceDAO;
+import com.sunbeam.entities.Part_Entity;
 import com.sunbeam.entities.Service;
 import com.sunbeam.entities.ServiceRequestEntity;
 import com.sunbeam.entities.maintainance;
@@ -89,9 +90,57 @@ public class Service_service {
 		
 	}
 		
-	} 
-	
-	
+	}
 
+	public static void doRepairing(ServiceRequestEntity serviceRequest) {
+		List<Service> serviceList = serviceRequest.getServiceList();
+		maintainance service = null;
+		boolean serviceFound = false;
+		if(serviceList.isEmpty()) {
+			service = new maintainance();
+		}
+		else {
+			for(Service S : serviceList) {
+				if(S instanceof maintainance) {
+						service = (maintainance) S;
+				serviceFound = true;
+				break;
+			}
+		}
+			if(serviceFound) {
+				System.out.println("List of all parts:");
+				Part_Service.showAll();
+				int specID = Part_Service.SpeciShow();
+				
+				int SID=serviceRequest.getId();
+				int PID = specID;
+				System.out.println("Enter Quantities of parts");
+				int QID = new Scanner(System.in).nextInt();
+				service.acceptPart();
+				Part_Entity parts = new Part_Entity(QID, null, null, QID);
+
+				Service_service.calculateTotalCostWParts(QID , service, parts);
+
+				serviceDAO.insertMainRepair(SID, PID, QID);
+				
+	            serviceDAO.updateMaintainance(serviceRequest, service);
+			}
+			else {
+				service = new maintainance();
+				serviceList.add(service);
+				service.acceptService();
+				service.calculateTotalCost();
+				serviceDAO.createNewMaintainance(serviceRequest, service);
+			}
+		
+	}
+		
+	}
+
+	private static void calculateTotalCostWParts(int QID, maintainance service, Part_Entity parts) {
+		double totalCost = service.getLabourCharges() + parts.getPrice() * QID + service.getTotal_cost();
+		service.setTotal_cost(totalCost);
+		
+	}
     
 	}
