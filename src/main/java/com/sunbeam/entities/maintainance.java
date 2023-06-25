@@ -76,5 +76,21 @@ public  class maintainance extends Service{
 		
 	}
 	
+	public void acceptPart() {
+		Scanner scanner = new Scanner(System.in);
+		System.out.println("Enter remark: ");
+	    String remark = scanner.nextLine();
+	    setRemark(remark);
+	    
+	    System.out.println("Enter labour charge: ");
+	    double labourCharge = scanner.nextDouble();
+	    setLabourCharges(labourCharge);
+	    
+	}
+
+	
+	
+	
+	
 	
 }
