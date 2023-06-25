@@ -186,7 +186,12 @@ public class Menu {
 				break;
 
 			case REPAIRING:
-				System.out.println("repairing");
+				if (serviceRequest != null) {
+					   Service_service.doRepairing(serviceRequest);
+				}else {
+					System.out.println("Failed to go in maintainance...choose service first");
+				}
+
 				break;
 
 			case OIL_ADDITIVE_CHANGE:
