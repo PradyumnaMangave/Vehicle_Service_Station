@@ -19,10 +19,11 @@ public class Part_Service {
 	}
 	
 	//Displays a specific part based on the given ID.
-	public static void SpeciShow() {
+	public static int SpeciShow() {
 		System.out.println("Enter Id of Part to display::");
 		int id = getInputId();
 		boolean partExists = com.sunbeam.dao.Parts_DAO.SpeciShow(id);
+		return id;
 	}
 	
 	//Inserts part data into the database.
@@ -81,5 +82,7 @@ public class Part_Service {
     private static double getInputDouble() {
         return new Scanner(System.in).nextDouble();
     }
-}
+
+	}
+
 
