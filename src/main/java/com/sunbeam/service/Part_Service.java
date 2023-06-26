@@ -19,11 +19,11 @@ public class Part_Service {
 	}
 	
 	//Displays a specific part based on the given ID.
-	public static int SpeciShow() {
+	public static Part_Entity SpeciShow() {
 		System.out.println("Enter Id of Part to display::");
 		int id = getInputId();
-		boolean partExists = com.sunbeam.dao.Parts_DAO.SpeciShow(id);
-		return id;
+		return com.sunbeam.dao.Parts_DAO.SpeciShow(id);
+		
 	}
 	
 	//Inserts part data into the database.
