@@ -28,8 +28,8 @@ public class Parts_DAO {
 		return f;
 	}
 
-	public static boolean SpeciShow(int id) {
-		boolean f = false;
+	public static Part_Entity SpeciShow(int id) {
+		
 		try {
 			Connection con = DatabaseConnectivity.create();
 			String SQL = "SELECT * from Parts WHERE id = ?";
@@ -40,7 +40,7 @@ public class Parts_DAO {
 			if(rs.next()) {
 				Part_Entity part_Entity = new Part_Entity(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getDouble(4));
 				System.out.println(part_Entity);
-				f=true;
+				return part_Entity;
 			}
 			else {
 				System.out.println("ID not found... Check it again...");
@@ -51,7 +51,7 @@ public class Parts_DAO {
 			e.printStackTrace();
 		}
 
-		return f;
+		return null;
 	}
 
 	public static boolean insertToDB(Part_Entity parts) {
