@@ -107,7 +107,7 @@ public class serviceDAO {
 	        pst.setString(1, service.getRemark());
 	        pst.setDouble(2, ((maintainance) service).getLabourCharges());
 	        pst.setDouble(3, service.getTotal_cost());
-	        pst.setInt(4, service.getId());
+	        pst.setInt(4, serviceRequest.getId());
 	        int rowsUpdated = pst.executeUpdate();
 	        if (rowsUpdated > 0) {
 	            System.out.println("Maintenance service updated successfully.");
@@ -122,13 +122,14 @@ public class serviceDAO {
 	public static void updateMainRepair(ServiceRequestEntity serviceRequest, Service service, Part_Entity parts, int QID) {
 	    try {
 	        Connection con = DatabaseConnectivity.create();
-	        String SQL = "UPDATE services SET remark = CONCAT(?, ' , ', remark), labour_charges = labour_charges + ? , total_cost = total_cost + ? * ?  WHERE id = ?";
+	        String SQL = "UPDATE services SET remark = CONCAT(?, ' , ', remark), labour_charges = labour_charges + ? , total_cost = ?  WHERE id = ?";
 	        PreparedStatement pst = con.prepareStatement(SQL);
 	        pst.setString(1, service.getRemark());
 	        pst.setDouble(2,  ((maintainance) service).getLabourCharges());
-	        pst.setDouble(3, parts.getPrice());
-	        pst.setDouble(4, QID);
-	        pst.setInt(5, service.getId());
+	        pst.setDouble(3, service.getTotal_cost());
+	        pst.setInt(4, serviceRequest.getId());
+	       
+	        pst.setInt(4, service.getId());
 	        int rowsUpdated = pst.executeUpdate();
 	        if (rowsUpdated > 0) {
 	            System.out.println("Maintenance service updated successfully.");

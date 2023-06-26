@@ -50,8 +50,5 @@ public abstract class Service {
 	
  	public abstract void calculateTotalCost();
 
-	public void add(Service service) {
-		// TODO Auto-generated method stub
-		
-	}
+	
 }

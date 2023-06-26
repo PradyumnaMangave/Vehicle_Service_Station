@@ -110,20 +110,21 @@ public class Service_service {
 			if(serviceFound) {
 				System.out.println("List of all parts:");
 				Part_Service.showAll();
-				int specID = Part_Service.SpeciShow();
+				Part_Entity part = Part_Service.SpeciShow();
 				
-				int SID=serviceRequest.getId();
-				int PID = specID;
+				int SID=service.getId();
+				int PID = part.getId();
 				System.out.println("Enter Quantities of parts");
 				int QID = new Scanner(System.in).nextInt();
 				service.acceptPart();
-				Part_Entity parts = new Part_Entity(QID, null, null, QID);
+				service.calculateTotalPartsCost(QID,part,service);
 
-				Service_service.calculateTotalCostWParts(QID , service, parts);
-
+				System.out.println(service.getTotal_cost());
 				serviceDAO.insertMainRepair(SID, PID, QID);
 				
-	            serviceDAO.updateMaintainance(serviceRequest, service);
+	            serviceDAO.updateMainRepair(serviceRequest, service, part, QID);
+	            System.out.println(service.getTotal_cost());
+				            
 			}
 			else {
 				service = new maintainance();
@@ -131,16 +132,10 @@ public class Service_service {
 				service.acceptService();
 				service.calculateTotalCost();
 				serviceDAO.createNewMaintainance(serviceRequest, service);
-			}
-		
+			}	
 	}
 		
 	}
-
-	private static void calculateTotalCostWParts(int QID, maintainance service, Part_Entity parts) {
-		double totalCost = service.getLabourCharges() + parts.getPrice() * QID + service.getTotal_cost();
-		service.setTotal_cost(totalCost);
-		
-	}
+	
     
 	}

@@ -88,6 +88,14 @@ public  class maintainance extends Service{
 	    
 	}
 
+
+	public void calculateTotalPartsCost(int QID, Part_Entity part, maintainance service) {
+		parts_cost = part.getPrice()*QID;
+		double totalCost = getTotal_cost()+getLabourCharges() + getParts_cost();
+		setTotal_cost(totalCost);
+		
+	}
+
 	
 	
 	
