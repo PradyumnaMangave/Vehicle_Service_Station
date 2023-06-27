@@ -75,14 +75,45 @@
 		public static void speciCustomer() {
 			Customer_Entity customer = Customer_Service.speciShow1();
 			
-		    vehicleDAO.speciCustomer(vehicleList,customer);
-		    if(vehicleList!=null)
-		    for (NewVehicleEntity newVehicleEntity : vehicleList) {
-				System.out.println(newVehicleEntity);
+			if (customer == null) {
+			        System.out.println("Mobile number not found.");     
+			        
+			        //method to insert customer data if it is not present
+			        Customer_Service.insertToDB();
+			        System.out.println("Customer Created..");
+			        
+			        //imported method of inserting vehicle number into database
+			        Vehicle_service.insertToDb();
+			        
+			        List<NewVehicleEntity> vehicleList = new ArrayList<NewVehicleEntity> ();
+					vehicleDAO.speciCustomer(vehicleList,customer);
+				    
+					 if (vehicleList.isEmpty()) {
+					        System.out.println("No vehicles found for the customer.");
+					        return;
+					    }
+
+					    for (NewVehicleEntity newVehicleEntity : vehicleList) {
+					        System.out.println(newVehicleEntity);
+					    }
+			       
+			      
+			    }
+			
+			else {
+			List<NewVehicleEntity> vehicleList = new ArrayList<NewVehicleEntity> ();
+			vehicleDAO.speciCustomer(vehicleList,customer);
+		    
+			 if (vehicleList.isEmpty()) {
+			        System.out.println("No vehicles found for the customer.");
+			        return;
+			    }
+
+			    for (NewVehicleEntity newVehicleEntity : vehicleList) {
+			        System.out.println(newVehicleEntity);
+			    }
 			}
-		    else {
-		    	Customer_Service.insertToDB();
-		    }
+		    
 		}
 		
 		//Show details of all vehicles
