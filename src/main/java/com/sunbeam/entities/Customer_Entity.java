@@ -45,6 +45,14 @@ public class Customer_Entity {
 		this.email = email;
 		this.address = address;
 	}
+	public Customer_Entity( String name, String mobile, String email, String address) {
+		super();
+		
+		this.name = name;
+		this.mobile = mobile;
+		this.email = email;
+		this.address = address;
+	}
 	@Override
 	public String toString() {
 		return "Customer [id=" + id + ", name=" + name + ", mobile=" + mobile + ", email=" + email + ", address="

@@ -13,8 +13,7 @@ public class Customer_Service {
 	public static void insertToDB() {
 	
 		Scanner sc = new Scanner(System.in);
-		System.out.println("Enter ID::");
-		int id = sc.nextInt();
+		
 		System.out.println("Enter Customer Name::");
 		String name = sc.next();
 		System.out.println("Enter Mobile Number::");
@@ -23,7 +22,7 @@ public class Customer_Service {
 		String email = sc.next();
 		System.out.println("Enter Address::");
 		String address = sc.next();
-		Customer_Entity customer = new Customer_Entity(id,name,mobile,email,address);
+		Customer_Entity customer = new Customer_Entity(name,mobile,email,address);
 
 		com.sunbeam.dao.Customer_DAO.insertToDB(customer);
 		System.out.println("Data Inserted Successfully");
@@ -82,6 +81,8 @@ public class Customer_Service {
 	
 	//Updates customer data in the database.
 	public static void update() {
+		
+		Customer_Service.showAll();
 		System.out.println("Enter ID in which You want to update data::");
 		int id = new Scanner(System.in).nextInt();
 		System.out.println("Add mobile number to update::");
@@ -102,5 +103,20 @@ public class Customer_Service {
 		    } else {
 		        System.out.println("Failed to update customer");
 		    }
+	}
+
+	public static Customer_Entity speciShowVehi(int i) {
+		System.out.println("Enter Customer's Mobile Number::");
+		String mobile =new Scanner(System.in).next();
+		Customer_Entity customer = com.sunbeam.dao.Customer_DAO.SpeciShow(mobile);
+		return customer;
+	}
+
+	public static Customer_Entity getSpeciCustomer(String vehicleNumber) {
+		
+	    Customer_DAO customer_DAO =new Customer_DAO();
+	    return Customer_DAO.getCustomer(vehicleNumber);
+	   
+		
 	}
 }

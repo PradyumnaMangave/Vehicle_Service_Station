@@ -17,14 +17,14 @@ public class Customer_DAO {
 		boolean f = false;
 		try {
 		Connection con = DatabaseConnectivity.create();
-		String SQL = ("INSERT into customer (id,name,mobile,email,address) values (? ,? ,? ,? ,?)");
+		String SQL = ("INSERT into customer (name,mobile,email,address) values (? ,? ,? ,?)");
 		PreparedStatement pst = con.prepareStatement(SQL);
 		
-		pst.setInt(1, customer.getId());
-		pst.setString(2, customer.getName());
-		pst.setString(3, customer.getMobile());
-		pst.setString(4, customer.getEmail());
-		pst.setString(5, customer.getAddress());
+		
+		pst.setString(1, customer.getName());
+		pst.setString(2, customer.getMobile());
+		pst.setString(3, customer.getEmail());
+		pst.setString(4, customer.getAddress());
 		
 		pst.executeUpdate();
 	}catch (Exception E)
@@ -177,6 +177,25 @@ public class Customer_DAO {
 		return customer;
 		
 		
+	}
+
+	public static Customer_Entity getCustomer(String vehicleNumber) {
+		
+		try {
+			Connection con = DatabaseConnectivity.create();
+			String SQL = "SELECT id,name,mobile,email,address,vehicle_number FROM customer INNER JOIN customer_vehicle cv ON id=cv.customer_id WHERE cv.vehicle_number=?";
+			PreparedStatement pst = con.prepareStatement(SQL);
+			pst.setString(1, vehicleNumber);
+			ResultSet rs = pst.executeQuery();
+			if(rs.next()) {
+				return new Customer_Entity(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5));
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return null;
 	}
 	
 }
