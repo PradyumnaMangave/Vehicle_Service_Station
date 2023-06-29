@@ -32,12 +32,29 @@ public class Part_Entity {
 	public void setPrice(double price) {
 		this.price = price;
 	}
-	public Part_Entity(int id, String name, String description, double price) {
+	public Part_Entity(int id,String name, String description, double price) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.description = description;
 		this.price = price;
+	}
+	
+	public Part_Entity(String name, String description, double price) {
+		super();
+		this.name = name;
+		this.description = description;
+		this.price = price;
+	}
+	
+	public Part_Entity(int id2, String name2) {
+		super();
+		this.id = id;
+		this.name = name;
+	}
+	public Part_Entity(int id) {
+		super();
+		this.id = id;
 	}
 	@Override
 	public String toString() {
