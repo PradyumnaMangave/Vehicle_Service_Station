@@ -1,7 +1,11 @@
 package com.sunbeam.Menu;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Scanner;
 
+import com.sunbeam.dao.BusinessDAO;
 import com.sunbeam.entities.BillEntity;
 import com.sunbeam.entities.ServiceRequestEntity;
 import com.sunbeam.service.Service_req_service;
@@ -248,10 +252,20 @@ public class Menu {
 	}
 
 	private static void todays_business() {
+		double totalBusiness = BusinessDAO.calculateTotalBusiness();
 
+        System.out.println("Total Business: " + totalBusiness);
 	}
 
 	private static void Specific_Day_business() {
+		
+		  SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+	        Scanner scanner = new Scanner(System.in);
+	        System.out.println("Enter Date to show Specific Days Dervice Requests::");
+	        System.out.print("Enter a date (yyyy-MM-dd): ");
+	        String inputDate = scanner.nextLine();
+	        double totalBusiness = BusinessDAO.calculateBusinessForDate(inputDate);
 
-	}
+	        System.out.println("Total Business: " + totalBusiness);
+}
 }
