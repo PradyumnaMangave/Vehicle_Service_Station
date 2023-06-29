@@ -9,8 +9,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.sunbeam.entities.Customer_Entity;
+import com.sunbeam.entities.Customer_Vehicle_Entity;
 import com.sunbeam.entities.NewVehicleEntity;
 import com.sunbeam.entities.ServiceRequestEntity;
+import com.sunbeam.entities.Vehicle_Entity;
 import com.sunbeam.util.DatabaseConnectivity;
 
 public class ServiceReqDAO {
@@ -98,6 +100,42 @@ public class ServiceReqDAO {
 	    }
 	    
 	    return serviceRequests;
+	}
+
+	public static void updateBillAmount(double bill,int service_request_id) {
+		try {
+			Connection con = DatabaseConnectivity.create();
+			String SQL = "Update service_requests set bill_amount = ? where id = ?";
+			PreparedStatement pst = con.prepareStatement(SQL);
+			pst.setDouble(1, bill);
+			pst.setInt(2, service_request_id);
+			pst.executeUpdate();
+			
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+	}
+
+	public NewVehicleEntity speciCustomerV(String vehicleNumber) {
+		try {
+			Connection con = DatabaseConnectivity.create();
+			String SQL = "SELECT v.company, v.model, cv.vehicle_number FROM vehicle v INNER JOIN customer_vehicle cv ON cv.vehicle_id = v.id WHERE vehicle_number = ?";
+
+			PreparedStatement pst = con.prepareStatement(SQL);
+			pst.setString(1, vehicleNumber);
+			ResultSet rs = pst.executeQuery();
+			while(rs.next()) {
+				NewVehicleEntity custVehi = new NewVehicleEntity(rs.getString(1),rs.getString(2),vehicleNumber);
+				return custVehi;
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return null;
 	}
 
 		
