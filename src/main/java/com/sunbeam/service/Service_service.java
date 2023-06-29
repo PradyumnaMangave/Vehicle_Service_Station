@@ -124,7 +124,7 @@ public class Service_service {
 				
 	            serviceDAO.updateMainRepair(serviceRequest, service, part, QID);
 	            System.out.println(service.getTotal_cost());
-				            
+				
 			}
 			else {
 				service = new maintainance();
@@ -135,6 +135,17 @@ public class Service_service {
 			}	
 	}
 		
+	}
+
+	public static void getServicePartsList(maintainance maintain) {
+		try {
+			serviceDAO serviceDAO = new serviceDAO();
+			serviceDAO.getServicePartsList(maintain);
+			
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 	
     

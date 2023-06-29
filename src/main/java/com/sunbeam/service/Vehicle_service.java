@@ -3,10 +3,12 @@
 	import java.util.ArrayList;
 	import java.util.List;
 	import java.util.Scanner;
-	
-	import com.sunbeam.dao.Vehicle_DAO;
+
+import com.sunbeam.dao.ServiceReqDAO;
+import com.sunbeam.dao.Vehicle_DAO;
 	import com.sunbeam.entities.Customer_Entity;
-	import com.sunbeam.entities.NewVehicleEntity;
+import com.sunbeam.entities.Customer_Vehicle_Entity;
+import com.sunbeam.entities.NewVehicleEntity;
 	import com.sunbeam.entities.Vehicle_Entity;
 	
 	public class Vehicle_service {
@@ -72,7 +74,7 @@
 		}
 		
 		// Get specific customer details and their vehicles
-		public static void speciCustomer() {
+		public static Customer_Vehicle_Entity speciCustomer() {
 			Customer_Entity customer = Customer_Service.speciShow1();
 			
 			if (customer == null) {
@@ -90,7 +92,7 @@
 				    
 					 if (vehicleList.isEmpty()) {
 					        System.out.println("No vehicles found for the customer.");
-					        return;
+					        
 					    }
 
 					    for (NewVehicleEntity newVehicleEntity : vehicleList) {
@@ -106,13 +108,14 @@
 		    
 			 if (vehicleList.isEmpty()) {
 			        System.out.println("No vehicles found for the customer.");
-			        return;
+			        
 			    }
 
 			    for (NewVehicleEntity newVehicleEntity : vehicleList) {
 			        System.out.println(newVehicleEntity);
 			    }
 			}
+			return null;
 		    
 		}
 		
@@ -173,4 +176,14 @@
 	    private static String readStringInput() {
 	        return scanner.next();
 	    }
-	}
+
+		public static NewVehicleEntity speciCustomerV(String vehicleNumber) {
+			
+			ServiceReqDAO servDAO = new ServiceReqDAO();
+			return servDAO.speciCustomerV(vehicleNumber);
+			
+			
+		}
+
+		
+}

@@ -8,6 +8,7 @@ import java.util.Scanner;
 
 import com.sunbeam.dao.ServiceReqDAO;
 import com.sunbeam.dao.Vehicle_DAO;
+import com.sunbeam.dao.serviceDAO;
 import com.sunbeam.entities.Customer_Entity;
 import com.sunbeam.entities.NewVehicleEntity;
 import com.sunbeam.entities.Service;
@@ -17,6 +18,7 @@ public class Service_req_service {
 	
 	private static Vehicle_DAO vehicle_DAO = new Vehicle_DAO();
 	private static ServiceReqDAO serviceReq =new ServiceReqDAO(); 
+	private static List<ServiceRequestEntity> serviceRequests = new ArrayList<>();
 	
 	public static String chooseCustomer(){
 		//imported show all method of customer to show all customers
@@ -89,6 +91,30 @@ public class Service_req_service {
 			  }
 		return null;
 		}
+
+	public static void addBill(double bill, int  service_request_id) {
+	   try {
+		serviceReq.updateBillAmount(bill, service_request_id);
+		   
+		   
+		   
+	} catch (Exception e) {
+		e.printStackTrace();
+	}
+
+	}
+
+	public static ServiceRequestEntity getServiceRequestById(int serviceRequestId) {
+	    for (ServiceRequestEntity serviceRequest : serviceRequests) {
+	        if (serviceRequest.getId() == serviceRequestId) {
+	            return serviceRequest;
+	        }
+	    }
+	    return null;
+	}
+
+	
+	
 	}
 
 	

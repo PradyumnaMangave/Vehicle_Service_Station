@@ -110,4 +110,33 @@ public class Parts_DAO {
 		
 		return f;
 	}
+
+	public static Part_Entity getPart(int partid) {
+		 Part_Entity part = null;
+		try {
+			Connection con = DatabaseConnectivity.create();
+			String SQL = "SELECT * FROM parts WHERE id = ?";
+			PreparedStatement pst = con.prepareStatement(SQL);
+			pst.setInt(1, partid);
+			ResultSet rs = pst.executeQuery();
+			if(rs.next()) {
+				int id = rs.getInt("id");
+                String name = rs.getString("name");
+                
+                part = new Part_Entity(id, name);
+			}
+			
+			
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return part;
+		
+		
+		
+		
+	}
+
+
 }
