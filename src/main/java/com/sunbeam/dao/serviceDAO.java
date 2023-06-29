@@ -8,6 +8,7 @@ import java.util.List;
 import com.sunbeam.entities.Part_Entity;
 import com.sunbeam.entities.Service;
 import com.sunbeam.entities.ServiceRequestEntity;
+import com.sunbeam.entities.Serviceparts;
 import com.sunbeam.entities.maintainance;
 import com.sunbeam.entities.oil;
 import com.sunbeam.util.DatabaseConnectivity;
@@ -102,12 +103,12 @@ public class serviceDAO {
 	public static void updateMaintainance(ServiceRequestEntity serviceRequest, Service service) {
 	    try {
 	        Connection con = DatabaseConnectivity.create();
-	        String SQL = "UPDATE services SET remark = CONCAT(?, ' , ', remark), labour_charges = labour_charges + ?, total_cost = total_cost + ? WHERE id = ?";
+	        String SQL = "UPDATE services SET remark = CONCAT(remark, ' , ', ?), labour_charges = labour_charges + ?, total_cost = total_cost + ? WHERE id = ?";
 	        PreparedStatement pst = con.prepareStatement(SQL);
 	        pst.setString(1, service.getRemark());
 	        pst.setDouble(2, ((maintainance) service).getLabourCharges());
 	        pst.setDouble(3, service.getTotal_cost());
-	        pst.setInt(4, serviceRequest.getId());
+	        pst.setInt(4, service.getId());
 	        int rowsUpdated = pst.executeUpdate();
 	        if (rowsUpdated > 0) {
 	            System.out.println("Maintenance service updated successfully.");
@@ -180,8 +181,27 @@ public class serviceDAO {
 		
 	}
 
+	public void getServicePartsList(maintainance maintain) {
+		
+		try {
+			Connection con = DatabaseConnectivity.create();
+			String SQL = "SELECT part_id,quantity from service_parts where service_id=?";
+			PreparedStatement pst = con.prepareStatement(SQL);
+			pst.setInt(1, maintain.getId());
+			ResultSet rs = pst.executeQuery();
+			List<Serviceparts> serviceparts =maintain.getPartsList();
+			while(rs.next()) {
+				serviceparts.add(new Serviceparts(rs.getInt(1), rs.getInt(2)));
+				maintain.setPartsList(serviceparts);
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		
 	}
 
+		
+	}
 
 
