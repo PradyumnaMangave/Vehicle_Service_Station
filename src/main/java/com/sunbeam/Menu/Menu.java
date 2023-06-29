@@ -137,7 +137,7 @@ public class Menu {
 				break;
 
 			case GET_PAYMENT:
-				System.out.println("Get payment from customer and store it in table");
+				com.sunbeam.service.paymentService.getPayment(0);
 				break;
 
 			default:
