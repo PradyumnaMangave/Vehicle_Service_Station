@@ -2,6 +2,7 @@ package com.sunbeam.Menu;
 
 import java.util.Scanner;
 
+import com.sunbeam.entities.BillEntity;
 import com.sunbeam.entities.ServiceRequestEntity;
 import com.sunbeam.service.Service_req_service;
 import com.sunbeam.service.Service_service;
@@ -114,6 +115,7 @@ public class Menu {
 
 	private static void service_request() {
 		EServiceRequestMenu choice;
+		BillEntity bill =new BillEntity();
 		String vehicleNumber = null;
 		while ((choice = MenuOptions.ServiceRequestOptions()) != EServiceRequestMenu.EXIT) {
 			switch (choice) {
@@ -131,7 +133,7 @@ public class Menu {
 				break;
 
 			case DISPLAY_BILL:
-				System.out.println("Generate bill");
+				bill.prepareBill(0);
 				break;
 
 			case GET_PAYMENT:
